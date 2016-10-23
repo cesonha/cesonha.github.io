@@ -12,7 +12,14 @@ h1{
   margin: 40px 0px 20px;
 }
 
+
 h4{
+  color: #fff;
+  font-weight: 100;
+  font-size: 25px;
+  margin: 40px 0px 20px;
+}
+a{
   color: #fff;
   font-weight: 100;
   font-size: 25px;
