@@ -24,7 +24,7 @@ function initializeClock(id, endtime) {
   }
   catch(err)
   {
-  alert(err.message);
+   //alert(err.message);
   }
 
   function updateClock() {
