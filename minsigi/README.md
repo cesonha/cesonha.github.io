@@ -1,2 +1,0 @@
-# cecerhcp.github.io
-website
