@@ -1,0 +1,19 @@
+{
+  "title": "Travel Adventures",
+  "description": "Photos from my travels around the world",
+  "coverImage": "/images/photos/travel/cover.jpg",
+  "photos": [
+    {
+      "src": "/images/photos/travel/photo1.jpg",
+      "caption": "The bustling streets of Tokyo at night. The neon lights created an electric atmosphere."
+    },
+    {
+      "src": "/images/photos/travel/photo2.jpg",
+      "caption": "Ancient ruins in Greece. Standing among history that spans thousands of years."
+    },
+    {
+      "src": "/images/photos/travel/photo3.jpg",
+      "caption": "Mountain village in Switzerland. The air was crisp and the views were breathtaking."
+    }
+  ]
+}

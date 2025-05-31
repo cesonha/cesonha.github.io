@@ -1,0 +1,19 @@
+{
+  "title": "Nature Photography",
+  "description": "A collection of my favorite nature photos",
+  "coverImage": "/images/photos/nature/cover.jpg",
+  "photos": [
+    {
+      "src": "/images/photos/nature/photo1.jpg",
+      "caption": "Sunset over the mountains. The vibrant colors painted the sky as day turned to night."
+    },
+    {
+      "src": "/images/photos/nature/photo2.jpg",
+      "caption": "Forest path in autumn. The leaves crunched beneath my feet as I walked through this magical scene."
+    },
+    {
+      "src": "/images/photos/nature/photo3.jpg",
+      "caption": "Ocean waves crashing against the shore. The power of nature is always awe-inspiring."
+    }
+  ]
+}
