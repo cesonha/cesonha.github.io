@@ -6,7 +6,6 @@ export default function ArtNavigation() {
   const currentPath = router.pathname;
   
   const artCategories = [
-    { title: 'All Collections', path: '/art' },
     { title: 'Music', path: '/art/music' },
     { title: 'Objects', path: '/art/objects' },
     { title: 'Illustration', path: '/art/illustration' },
