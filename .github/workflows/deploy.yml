@@ -18,11 +18,18 @@ jobs:
       - name: Install dependencies
         run: npm install
         
+      - name: Generate search content
+        run: node lib/generate-search-content.js
+        
       - name: Build
         run: npm run build
+        
+      - name: List output directory
+        run: ls -la
         
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
+          force_orphan: true
