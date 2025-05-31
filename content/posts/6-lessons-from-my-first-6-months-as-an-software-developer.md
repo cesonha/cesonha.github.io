@@ -37,7 +37,11 @@ This "Easier said than done" broccoli comes with cheese because you should eat i
 
 For example, I used Retrofit with Gson for a long time without actually understanding it because it was easy to just copy an interface and adapt it for a new route. It didn't do any harm at the beginning but after needing to parse some different Jsons I had to study how both Retrofit and Gson worked together (at least partially) or else I would have to write really stupid code to workaround the fact that I was limited to the code snippets I was only replicating.
 
-And for an example where I really decided "I think it's ok to stop here" there was this one time when I was having problems with photo rotation handling in Samsung devices (damn you, Samsung) and I started debugging it so deeply that I actually downloaded JPEG RFCs to understand which bits represented what in JPEGs metadata because some EXIF data WAS NOT MAKING SENSE… I stumbled on this piece of code in the source code of the Fresco library
+And for an example where I really decided "I think it's ok to stop here" there was this one time when I was having problems with photo rotation handling in Samsung devices (damn you, Samsung) and I started debugging it so deeply that I actually downloaded JPEG RFCs to understand which bits represented what in JPEGs metadata because some EXIF data WAS NOT MAKING SENSE…
+
+![Debugging JPEG metadata in Samsung devices](/images/blog/image1.webp)
+
+I stumbled on this piece of code in the source code of the Fresco library
 
 ```
 (magic == APP1_EXIF_MAGIC && zero == 0), for reals?
