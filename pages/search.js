@@ -1,26 +1,54 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { searchAllContent } from '../lib/search';
+import { fuzzyMatch } from '../lib/search';
+import { getAllPosts } from '../lib/posts';
+import { getAllAlbums } from '../lib/photos';
 
-export default function SearchResults() {
+export default function SearchResults({ allContent }) {
   const router = useRouter();
   const { q } = router.query;
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchResults() {
-      if (q) {
-        setLoading(true);
-        const searchResults = await searchAllContent(q);
-        setResults(searchResults);
+    function performSearch() {
+      if (!q) {
+        setResults([]);
         setLoading(false);
+        return;
       }
+
+      setLoading(true);
+      
+      const searchResults = [];
+      
+      // Search through all content
+      allContent.forEach(item => {
+        const titleMatch = fuzzyMatch(item.title, q);
+        const contentMatch = item.content && fuzzyMatch(item.content, q) || 
+                            item.excerpt && fuzzyMatch(item.excerpt, q) ||
+                            item.description && fuzzyMatch(item.description, q);
+        const tagsMatch = item.tags && item.tags.some(tag => fuzzyMatch(tag, q));
+        const creatorMatch = item.artist && fuzzyMatch(item.artist, q) || 
+                            item.creator && fuzzyMatch(item.creator, q);
+        
+        if (titleMatch || contentMatch || tagsMatch || creatorMatch) {
+          searchResults.push({
+            ...item,
+            matchType: titleMatch ? 'title' : 
+                      contentMatch ? 'content' : 
+                      tagsMatch ? 'tag' : 'creator'
+          });
+        }
+      });
+      
+      setResults(searchResults);
+      setLoading(false);
     }
 
-    fetchResults();
-  }, [q]);
+    performSearch();
+  }, [q, allContent]);
 
   // Group results by type
   const groupedResults = results.reduce((acc, result) => {
@@ -84,4 +112,118 @@ export default function SearchResults() {
       )}
     </div>
   );
+}
+
+// Pre-fetch all content at build time
+export async function getStaticProps() {
+  // Get blog posts
+  const posts = getAllPosts().map(post => ({
+    id: post.id,
+    title: post.title,
+    excerpt: post.excerpt || '',
+    content: post.content,
+    tags: post.tags,
+    type: 'blog',
+    url: `/blog/${post.id}`
+  }));
+
+  // Get photo albums
+  const albums = getAllAlbums();
+  
+  const photoContent = [];
+  
+  // Add albums
+  albums.forEach(album => {
+    photoContent.push({
+      id: album.id,
+      title: album.title,
+      description: album.description || '',
+      type: 'album',
+      url: `/photos/${album.id}`
+    });
+    
+    // Add photos from albums
+    if (album.photos) {
+      album.photos.forEach((photo, index) => {
+        if (photo.caption) {
+          photoContent.push({
+            id: `${album.id}-photo-${index}`,
+            title: `Photo in ${album.title}`,
+            excerpt: photo.caption,
+            type: 'photo',
+            url: `/photos/${album.id}`
+          });
+        }
+      });
+    }
+  });
+
+  // Get art content
+  const artContent = [];
+  
+  // Music items
+  try {
+    const musicItems = require('../content/art/music/items.json');
+    musicItems.forEach((item, index) => {
+      artContent.push({
+        id: `music-item-${index}`,
+        title: item.title,
+        artist: item.artist,
+        year: item.year,
+        description: item.description,
+        type: 'art',
+        category: 'music',
+        url: '/art/music'
+      });
+    });
+  } catch (e) {
+    // Music items not available
+  }
+  
+  // Illustration items
+  try {
+    const illustrationItems = require('../content/art/illustration/items.json');
+    illustrationItems.forEach((item, index) => {
+      artContent.push({
+        id: `illustration-item-${index}`,
+        title: item.title,
+        artist: item.artist,
+        year: item.year,
+        description: item.description,
+        type: 'art',
+        category: 'illustration',
+        url: '/art/illustration'
+      });
+    });
+  } catch (e) {
+    // Illustration items not available
+  }
+  
+  // Objects items
+  try {
+    const objectItems = require('../content/art/objects/items.json');
+    objectItems.forEach((item, index) => {
+      artContent.push({
+        id: `objects-item-${index}`,
+        title: item.title,
+        creator: item.creator,
+        year: item.year,
+        description: item.description,
+        type: 'art',
+        category: 'objects',
+        url: '/art/objects'
+      });
+    });
+  } catch (e) {
+    // Object items not available
+  }
+
+  // Combine all content
+  const allContent = [...posts, ...photoContent, ...artContent];
+
+  return {
+    props: {
+      allContent
+    }
+  };
 }
