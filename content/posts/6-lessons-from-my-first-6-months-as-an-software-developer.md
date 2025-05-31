@@ -7,7 +7,7 @@ tags: ["software development", "professional"]
 
 This is my first article and I wanted to write about some things that I learned/am still learning in the first 6 months that I am officially working as an Android developer (this article is not Android focused, it is more general) at the company that I was an intern for a little bit more than a year.
 
-Just a little about me: My name is Cesar, I'm from São Paulo, Brazil, I have 26 years old and recently got my bachelor's degree in computer science and finally started working as a software developer!!!
+Just a little about me: My name is Cesar, I'm from São Paulo, Brazil, I'm 26 years old and recently got my bachelor's degree in computer science and finally started working as a software developer!!!
 
 I work at Colab, it is a startup that works improving the relation between Brazilian (for now) governments and its citizens and I am really glad that I am able to help improve our cities and work in something that has a direct positive social impact.
 
