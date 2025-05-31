@@ -215,8 +215,6 @@ export async function getStaticProps() {
   return {
     props: {
       allContent
-    },
-    // Revalidate every hour to ensure search content is up to date
-    revalidate: 3600
+    }
   };
 }
