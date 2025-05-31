@@ -1,4 +1,4 @@
-# Cesar Cano's Personal Website
+# Lofi Bits - Personal Website
 
 A clean, static website built with Next.js that includes sections for About, Blog, Photo Albums, and more.
 

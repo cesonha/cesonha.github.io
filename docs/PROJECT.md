@@ -1,4 +1,4 @@
-# Cesar Cano's Personal Website Documentation
+# Lofi Bits - Personal Website Documentation
 
 This document provides a comprehensive overview of the personal website project, including its structure, technologies used, and instructions for maintaining and extending the site.
 

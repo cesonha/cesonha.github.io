@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
-export default function Layout({ children, title = 'Cesar Cano | Personal Website' }) {
+export default function Layout({ children, title = 'Lofi Bits | Personal Website' }) {
   const [searchContent, setSearchContent] = useState([]);
   
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function Layout({ children, title = 'Cesar Cano | Personal Websit
     <div className="flex flex-col min-h-screen">
       <Head>
         <title>{title}</title>
-        <meta name="description" content="Cesar Cano's personal website" />
+        <meta name="description" content="Lofi Bits - Cesar Cano's personal website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
