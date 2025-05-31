@@ -1,11 +1,10 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { getAllAlbums } from '../../lib/photos';
 
 export default function Photos({ albums }) {
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-6">Photo Albums</h1>
+      <h1 className="text-3xl font-bold mb-6 text-purple-300">Photo Albums</h1>
       
       {albums.length === 0 ? (
         <p>No photo albums found.</p>
@@ -17,7 +16,7 @@ export default function Photos({ albums }) {
               key={album.id}
               className="block group"
             >
-              <div className="bg-white rounded shadow-md overflow-hidden">
+              <div className="bg-dark-card rounded shadow-md overflow-hidden border border-gray-800 hover:border-primary transition-colors">
                 <div className="relative h-48 w-full">
                   {album.coverImage ? (
                     <img
@@ -26,15 +25,15 @@ export default function Photos({ albums }) {
                       className="w-full h-full object-cover group-hover:opacity-90 transition-opacity"
                     />
                   ) : (
-                    <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                    <div className="w-full h-full bg-dark-lighter flex items-center justify-center">
                       <span className="text-gray-500">No cover image</span>
                     </div>
                   )}
                 </div>
                 <div className="p-4">
-                  <h2 className="text-xl font-semibold mb-1 group-hover:text-blue-600">{album.title}</h2>
-                  <p className="text-gray-600">{album.description}</p>
-                  <p className="text-sm text-gray-500 mt-2">{album.photos?.length || 0} photos</p>
+                  <h2 className="text-xl font-semibold mb-1 text-teal-300 group-hover:text-teal-200 transition-colors">{album.title}</h2>
+                  <p className="text-gray-300">{album.description}</p>
+                  <p className="text-sm text-gray-400 mt-2">{album.photos?.length || 0} photos</p>
                 </div>
               </div>
             </Link>

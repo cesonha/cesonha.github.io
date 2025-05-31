@@ -5,13 +5,13 @@ export default function Post({ post }) {
   return (
     <article className="max-w-3xl mx-auto">
       <header className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">{post.title}</h1>
-        <div className="text-gray-500">
+        <h1 className="text-3xl font-bold mb-2 text-purple-300">{post.title}</h1>
+        <div className="text-gray-400">
           {new Date(post.date).toLocaleDateString()}
           {post.tags && (
             <span className="ml-4">
               {post.tags.map(tag => (
-                <span key={tag} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+                <span key={tag} className="inline-block bg-dark-lighter rounded-full px-3 py-1 text-sm font-semibold text-primary mr-2">
                   #{tag}
                 </span>
               ))}
@@ -20,7 +20,7 @@ export default function Post({ post }) {
         </div>
       </header>
       
-      <div className="prose lg:prose-xl">
+      <div className="prose lg:prose-xl max-w-none">
         <ReactMarkdown>{post.content}</ReactMarkdown>
       </div>
     </article>

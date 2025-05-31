@@ -5,7 +5,6 @@ export default function Navbar() {
   const router = useRouter();
   
   const navItems = [
-    { label: 'Home', path: '/' },
     { label: 'About', path: '/about' },
     { label: 'Blog', path: '/blog' },
     { label: 'Photos', path: '/photos' },
@@ -18,18 +17,20 @@ export default function Navbar() {
   ];
   
   return (
-    <nav className="bg-gray-800 text-white">
+    <nav className="bg-dark-lighter text-white">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
-          <div className="text-xl font-bold">Your Name</div>
+          <Link href="/about" className="text-xl font-bold text-accent hover:text-accent-hover transition-colors">
+            Your Name
+          </Link>
           
           <div className="flex space-x-6">
             {navItems.map((item) => (
               <Link 
                 href={item.path} 
                 key={item.path}
-                className={`hover:text-gray-300 ${
-                  router.pathname === item.path ? 'text-white font-bold' : 'text-gray-300'
+                className={`hover:text-primary transition-colors ${
+                  router.pathname === item.path ? 'text-primary font-bold' : 'text-gray-300'
                 }`}
               >
                 {item.label}
@@ -44,7 +45,7 @@ export default function Navbar() {
                 key={link.label}
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white"
+                className="text-gray-300 hover:text-accent transition-colors"
               >
                 {link.label}
               </a>

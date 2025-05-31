@@ -1,9 +1,9 @@
 export default function About() {
   return (
     <div className="max-w-3xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">About Me</h1>
+      <h1 className="text-4xl font-bold mb-6 text-purple-300">About Me</h1>
       
-      <div className="prose lg:prose-xl">
+      <div className="prose lg:prose-xl max-w-none">
         <p>
           Hello! I'm a software developer with a passion for creating clean, 
           efficient, and user-friendly applications. I specialize in web development
