@@ -8,6 +8,7 @@ export default function Navbar() {
     { label: 'About', path: '/about' },
     { label: 'Blog', path: '/blog' },
     { label: 'Photos', path: '/photos' },
+    { label: 'Art', path: '/art' },
   ];
   
   const socialLinks = [

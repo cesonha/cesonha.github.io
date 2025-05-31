@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Kind of Blue",
+    "artist": "Miles Davis",
+    "year": "1959",
+    "description": "A groundbreaking jazz album that introduced modal jazz to a wider audience. The relaxed, improvised style created a new direction for jazz.",
+    "link": "https://open.spotify.com/album/1weenld61qoidwYuZ1GESA"
+  },
+  {
+    "title": "Abbey Road",
+    "artist": "The Beatles",
+    "year": "1969",
+    "description": "The eleventh studio album by the English rock band, featuring iconic songs and the famous medley on side two.",
+    "link": "https://open.spotify.com/album/0ETFjACtuP2ADo6LFhL6HN"
+  },
+  {
+    "title": "Blue",
+    "artist": "Joni Mitchell",
+    "year": "1971",
+    "description": "A deeply personal folk album that showcases Mitchell's songwriting and vocal abilities. Considered one of the greatest albums of all time.",
+    "link": "https://open.spotify.com/album/1vz94WpXDVYIEGja8cjFNa"
+  }
+]
