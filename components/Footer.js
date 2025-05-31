@@ -4,10 +4,10 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <div>
-            <p>© {new Date().getFullYear()} <span className="text-accent">Your Name</span></p>
+            <p>© {new Date().getFullYear()} <span className="text-orange-400">Your Name</span></p>
           </div>
           <div>
-            <p>Built with <span className="text-primary">Next.js</span></p>
+            <p>Built with <span className="text-red-400">Next.js</span></p>
           </div>
         </div>
       </div>

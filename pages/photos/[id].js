@@ -3,7 +3,7 @@ import { getAlbumById, getAlbumIds } from '../../lib/photos';
 export default function Album({ album }) {
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-2 text-purple-300">{album.title}</h1>
+      <h1 className="text-3xl font-bold mb-2 text-red-400">{album.title}</h1>
       <p className="text-gray-300 mb-6">{album.description}</p>
       
       {album.photos?.length > 0 ? (

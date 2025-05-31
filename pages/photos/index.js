@@ -4,7 +4,7 @@ import { getAllAlbums } from '../../lib/photos';
 export default function Photos({ albums }) {
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-6 text-purple-300">Photo Albums</h1>
+      <h1 className="text-3xl font-bold mb-6 text-red-400">Photo Albums</h1>
       
       {albums.length === 0 ? (
         <p>No photo albums found.</p>
@@ -16,7 +16,7 @@ export default function Photos({ albums }) {
               key={album.id}
               className="block group"
             >
-              <div className="bg-dark-card rounded shadow-md overflow-hidden border border-gray-800 hover:border-primary transition-colors">
+              <div className="bg-dark-card rounded shadow-md overflow-hidden border border-gray-800 hover:border-red-500 transition-colors">
                 <div className="relative h-48 w-full">
                   {album.coverImage ? (
                     <img
@@ -31,7 +31,7 @@ export default function Photos({ albums }) {
                   )}
                 </div>
                 <div className="p-4">
-                  <h2 className="text-xl font-semibold mb-1 text-teal-300 group-hover:text-teal-200 transition-colors">{album.title}</h2>
+                  <h2 className="text-xl font-semibold mb-1 text-orange-300 group-hover:text-orange-200 transition-colors">{album.title}</h2>
                   <p className="text-gray-300">{album.description}</p>
                   <p className="text-sm text-gray-400 mt-2">{album.photos?.length || 0} photos</p>
                 </div>

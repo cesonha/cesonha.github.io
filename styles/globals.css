@@ -11,19 +11,19 @@ body {
 }
 
 .prose h1, .prose h2, .prose h3, .prose h4 {
-  @apply text-purple-300;
+  @apply text-red-400;
 }
 
 .prose strong {
-  @apply text-teal-300;
+  @apply text-orange-300;
 }
 
 .prose a {
-  @apply text-cyan-400 hover:text-cyan-300;
+  @apply text-red-300 hover:text-red-200;
 }
 
 .prose ul li::before {
-  @apply text-purple-400;
+  @apply text-red-500;
 }
 
 .prose img {

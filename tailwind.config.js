@@ -9,12 +9,12 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#8B5CF6', // Purple
-          hover: '#7C3AED',
+          DEFAULT: '#EF4444', // Red
+          hover: '#DC2626',
         },
         accent: {
-          DEFAULT: '#2DD4BF', // Teal
-          hover: '#14B8A6',
+          DEFAULT: '#F97316', // Orange
+          hover: '#EA580C',
         },
         dark: {
           DEFAULT: '#111827', // Dark gray
@@ -27,21 +27,21 @@ module.exports = {
           css: {
             color: theme('colors.gray.300'),
             h1: {
-              color: theme('colors.purple.300'),
+              color: theme('colors.red.400'),
             },
             h2: {
-              color: theme('colors.purple.300'),
+              color: theme('colors.red.400'),
             },
             h3: {
-              color: theme('colors.purple.300'),
+              color: theme('colors.red.400'),
             },
             strong: {
-              color: theme('colors.teal.300'),
+              color: theme('colors.orange.300'),
             },
             a: {
-              color: theme('colors.cyan.400'),
+              color: theme('colors.red.300'),
               '&:hover': {
-                color: theme('colors.cyan.300'),
+                color: theme('colors.red.200'),
               },
             },
           },

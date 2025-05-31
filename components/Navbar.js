@@ -20,7 +20,7 @@ export default function Navbar() {
     <nav className="bg-dark-lighter text-white">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
-          <Link href="/about" className="text-xl font-bold text-accent hover:text-accent-hover transition-colors">
+          <Link href="/about" className="text-xl font-bold text-orange-400 hover:text-orange-300 transition-colors">
             Your Name
           </Link>
           
