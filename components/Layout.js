@@ -14,9 +14,13 @@ export default function Layout({ children, title = 'My Personal Website' }) {
         if (response.ok) {
           const data = await response.json();
           setSearchContent(data);
+        } else {
+          console.warn('Search content not available, search functionality will be limited');
+          setSearchContent([]);
         }
       } catch (error) {
         console.error('Failed to load search content:', error);
+        setSearchContent([]);
       }
     }
     

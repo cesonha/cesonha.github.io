@@ -26,7 +26,7 @@ export default function SearchBar({ allContent }) {
 
   // Search as user types
   useEffect(() => {
-    if (!query.trim() || !allContent) {
+    if (!query.trim() || !allContent || !Array.isArray(allContent) || allContent.length === 0) {
       setResults([]);
       return;
     }
