@@ -5,7 +5,7 @@ export default function About() {
       
       <div className="prose lg:prose-xl max-w-none">
         <p>
-          Hello! I'm a software developer with a passion for creating clean, 
+          Hello! I'm Cesar Cano, a software developer with a passion for creating clean, 
           efficient, and user-friendly applications. I specialize in web development
           and enjoy working with modern technologies.
         </p>
