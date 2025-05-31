@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import SearchBar from './SearchBar';
 
 export default function Navbar() {
   const router = useRouter();
@@ -39,7 +40,8 @@ export default function Navbar() {
             ))}
           </div>
           
-          <div className="flex space-x-4">
+          <div className="flex items-center space-x-4">
+            <SearchBar />
             {socialLinks.map((link) => (
               <a 
                 href={link.url} 
