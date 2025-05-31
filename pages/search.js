@@ -30,15 +30,12 @@ export default function SearchResults({ allContent }) {
                             item.excerpt && fuzzyMatch(item.excerpt, q) ||
                             item.description && fuzzyMatch(item.description, q);
         const tagsMatch = item.tags && item.tags.some(tag => fuzzyMatch(tag, q));
-        const creatorMatch = item.artist && fuzzyMatch(item.artist, q) || 
-                            item.creator && fuzzyMatch(item.creator, q);
         
-        if (titleMatch || contentMatch || tagsMatch || creatorMatch) {
+        if (titleMatch || contentMatch || tagsMatch) {
           searchResults.push({
             ...item,
             matchType: titleMatch ? 'title' : 
-                      contentMatch ? 'content' : 
-                      tagsMatch ? 'tag' : 'creator'
+                      contentMatch ? 'content' : 'tag'
           });
         }
       });
@@ -168,8 +165,6 @@ export async function getStaticProps() {
       artContent.push({
         id: `music-item-${index}`,
         title: item.title,
-        artist: item.artist,
-        year: item.year,
         description: item.description,
         type: 'art',
         category: 'music',
@@ -179,7 +174,7 @@ export async function getStaticProps() {
   } catch (e) {
     // Music items not available
   }
-  
+      
   // Illustration items
   try {
     const illustrationItems = require('../content/art/illustration/items.json');
@@ -187,8 +182,6 @@ export async function getStaticProps() {
       artContent.push({
         id: `illustration-item-${index}`,
         title: item.title,
-        artist: item.artist,
-        year: item.year,
         description: item.description,
         type: 'art',
         category: 'illustration',
@@ -198,7 +191,7 @@ export async function getStaticProps() {
   } catch (e) {
     // Illustration items not available
   }
-  
+      
   // Objects items
   try {
     const objectItems = require('../content/art/objects/items.json');
@@ -206,8 +199,6 @@ export async function getStaticProps() {
       artContent.push({
         id: `objects-item-${index}`,
         title: item.title,
-        creator: item.creator,
-        year: item.year,
         description: item.description,
         type: 'art',
         category: 'objects',

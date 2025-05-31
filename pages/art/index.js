@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ArtNavigation from '../../components/ArtNavigation';
 
 export default function Art() {
   const artSections = [
@@ -25,6 +26,9 @@ export default function Art() {
   return (
     <div>
       <h1 className="text-3xl font-bold mb-6 text-red-400">Art Collections</h1>
+      
+      <ArtNavigation />
+      
       <p className="text-gray-300 mb-8">
         A curated collection of art in various forms that inspires me. Browse through different categories below.
       </p>

@@ -1,25 +1,22 @@
 import { getArtItems } from '../../lib/art';
-import Link from 'next/link';
+import ArtNavigation from '../../components/ArtNavigation';
 
 export default function Music({ items }) {
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-2 text-red-400">Music</h1>
-      <p className="text-gray-300 mb-6">A collection of music that inspires me.</p>
+      <h1 className="text-3xl font-bold mb-6 text-red-400">Music</h1>
       
-      <Link href="/art" className="text-red-300 hover:text-red-200 mb-6 inline-block">
-        ← Back to Art Collections
-      </Link>
+      <ArtNavigation />
+      
+      <p className="text-gray-300 mb-6">A collection of music that inspires me.</p>
       
       {items.length === 0 ? (
         <p className="mt-4">No music items found.</p>
       ) : (
-        <div className="mt-6 space-y-8">
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
           {items.map((item, index) => (
             <div key={index} className="bg-dark-card rounded shadow-md overflow-hidden border border-gray-800 p-4">
               <h2 className="text-xl font-semibold mb-2 text-orange-300">{item.title}</h2>
-              {item.artist && <p className="text-gray-300 mb-1">Artist: {item.artist}</p>}
-              {item.year && <p className="text-gray-400 text-sm mb-3">Year: {item.year}</p>}
               <p className="text-gray-300 mb-3">{item.description}</p>
               {item.link && (
                 <a 
