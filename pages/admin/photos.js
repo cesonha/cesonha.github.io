@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { createPhotoAlbum } from '../../lib/admin-utils';
@@ -78,8 +78,70 @@ export default function PhotosAdmin() {
     }
   }, [selectedAlbum, mode]);
 
+  const fileInputRef = useRef(null);
+
   const addPhotoField = () => {
-    setPhotos([...photos, { src: '', caption: '' }]);
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
+  const handleFileUpload = async (e) => {
+    if (!e.target.files || e.target.files.length === 0) return;
+    
+    const file = e.target.files[0];
+    if (!file) return;
+    
+    // Reset the file input
+    e.target.value = '';
+    
+    // Create a temporary photo entry with loading state
+    const newPhotoIndex = photos.length;
+    const newPhotos = [...photos];
+    if (newPhotos[newPhotos.length - 1].src !== '') {
+      newPhotos.push({ src: 'uploading', caption: '' });
+    } else {
+      newPhotos[newPhotos.length - 1].src = 'uploading';
+    }
+    setPhotos(newPhotos);
+    
+    try {
+      // Create FormData
+      const formData = new FormData();
+      formData.append('file', file);
+      
+      // Upload the file
+      const response = await fetch(`/api/admin/upload-photo?albumSlug=${slug || 'temp'}`, {
+        method: 'POST',
+        body: formData,
+      });
+      
+      const data = await response.json();
+      
+      if (response.ok && data.success) {
+        // Update the photo entry with the actual path
+        const updatedPhotos = [...photos];
+        if (updatedPhotos[newPhotoIndex]) {
+          updatedPhotos[newPhotoIndex].src = data.photoPath;
+        } else {
+          // If the array structure changed during upload, add to the end
+          updatedPhotos.push({ src: data.photoPath, caption: '' });
+        }
+        setPhotos(updatedPhotos);
+        setMessage(`Photo uploaded successfully: ${data.photoPath}`);
+      } else {
+        // Remove the temporary entry if upload failed
+        const filteredPhotos = photos.filter((p, i) => i !== newPhotoIndex || p.src !== 'uploading');
+        setPhotos(filteredPhotos);
+        setMessage(`Error: ${data.message || 'Failed to upload photo'}`);
+      }
+    } catch (error) {
+      console.error('Error uploading file:', error);
+      // Remove the temporary entry if upload failed
+      const filteredPhotos = photos.filter((p, i) => i !== newPhotoIndex || p.src !== 'uploading');
+      setPhotos(filteredPhotos);
+      setMessage(`Error: ${error.message}`);
+    }
   };
 
   const removePhotoField = (index) => {
@@ -250,6 +312,13 @@ export default function PhotosAdmin() {
             >
               Add Photo
             </button>
+            <input
+              type="file"
+              ref={fileInputRef}
+              onChange={handleFileUpload}
+              accept="image/*"
+              className="hidden"
+            />
           </div>
 
           <div className="space-y-4">
@@ -270,13 +339,41 @@ export default function PhotosAdmin() {
                 
                 <div className="mb-2">
                   <label className="block text-gray-400 mb-1 text-sm">Image URL (relative to public folder)</label>
-                  <input
-                    type="text"
-                    value={photo.src}
-                    onChange={(e) => updatePhotoField(index, 'src', e.target.value)}
-                    placeholder="images/photos/album-name/photo1.jpg"
-                    className="w-full p-2 bg-gray-800 border border-gray-700 rounded text-gray-200"
-                  />
+                  <div className="flex">
+                    <input
+                      type="text"
+                      value={photo.src === 'uploading' ? 'Uploading...' : photo.src}
+                      onChange={(e) => updatePhotoField(index, 'src', e.target.value)}
+                      placeholder="images/photos/album-name/photo1.jpg"
+                      className={`w-full p-2 bg-gray-800 border border-gray-700 rounded-l text-gray-200 ${photo.src === 'uploading' ? 'opacity-50' : ''}`}
+                      disabled={photo.src === 'uploading'}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (fileInputRef.current) {
+                          fileInputRef.current.click();
+                        }
+                      }}
+                      className="px-3 py-2 bg-gray-700 text-white rounded-r hover:bg-gray-600 text-sm"
+                    >
+                      Browse
+                    </button>
+                  </div>
+                  {photo.src && photo.src !== 'uploading' && (
+                    <div className="mt-2">
+                      <img 
+                        src={photo.src} 
+                        alt="Preview" 
+                        className="h-20 object-cover rounded border border-gray-700" 
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = '/placeholder-image.jpg';
+                          e.target.classList.add('opacity-50');
+                        }}
+                      />
+                    </div>
+                  )}
                 </div>
                 
                 <div>
