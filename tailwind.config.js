@@ -10,11 +10,11 @@ module.exports = {
       colors: {
         // Main color palette
         primary: {
-          DEFAULT: '#E53E3E', // Red-600
-          hover: '#C53030', // Red-700
-          light: '#FC8181', // Red-300
-          lighter: '#FEB2B2', // Red-200
-          dark: '#9B2C2C', // Red-800
+          DEFAULT: '#10B981', // Green-500
+          hover: '#059669', // Green-600
+          light: '#34D399', // Green-400
+          lighter: '#6EE7B7', // Green-300
+          dark: '#047857', // Green-700
         },
         // Background colors
         dark: {
