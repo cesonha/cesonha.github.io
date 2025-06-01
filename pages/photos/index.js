@@ -4,7 +4,7 @@ import { getAllAlbums } from '../../lib/photos';
 export default function Photos({ albums }) {
   return (
     <div className="w-full">
-      <h1 className="text-3xl font-bold mb-6 text-red-400">Photo Albums</h1>
+      <h1 className="text-3xl font-bold mb-6 text-primary-light">Photo Albums</h1>
       
       {albums.length === 0 ? (
         <p>No photo albums found.</p>
@@ -16,7 +16,7 @@ export default function Photos({ albums }) {
               key={album.id}
               className="block group"
             >
-              <div className="bg-dark-card rounded shadow-md overflow-hidden border border-gray-800 hover:border-red-500 transition-colors">
+              <div className="bg-dark-card rounded shadow-md overflow-hidden border border-dark-border hover:border-primary-light transition-colors">
                 <div className="relative h-48 w-full">
                   {album.coverImage ? (
                     <img
@@ -26,14 +26,14 @@ export default function Photos({ albums }) {
                     />
                   ) : (
                     <div className="w-full h-full bg-dark-lighter flex items-center justify-center">
-                      <span className="text-gray-500">No cover image</span>
+                      <span className="text-text-muted">No cover image</span>
                     </div>
                   )}
                 </div>
                 <div className="p-4">
-                  <h2 className="text-xl font-semibold mb-1 text-orange-300 group-hover:text-orange-200 transition-colors">{album.title}</h2>
-                  <p className="text-gray-300">{album.description}</p>
-                  <p className="text-sm text-gray-400 mt-2">{album.photos?.length || 0} photos</p>
+                  <h2 className="text-xl font-semibold mb-1 text-primary-light group-hover:text-primary-hover transition-colors">{album.title}</h2>
+                  <p className="text-text-secondary">{album.description}</p>
+                  <p className="text-sm text-text-muted mt-2">{album.photos?.length || 0} photos</p>
                 </div>
               </div>
             </Link>

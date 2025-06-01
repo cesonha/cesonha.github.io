@@ -102,7 +102,7 @@ export default function SearchBar({ allContent }) {
                 href={result.url} 
                 key={result.id}
                 onClick={() => setShowResults(false)}
-                className="block px-3 py-2 hover:bg-gray-800 rounded transition-colors"
+                className="block px-3 py-2 hover:bg-dark-lighter rounded transition-colors"
               >
                 <div className="flex justify-between items-center">
                   <h4 className="text-sm font-medium text-text-primary truncate max-w-[180px]">{result.title}</h4>
