@@ -67,8 +67,20 @@ For styling changes:
 
 ```
 tailwind.config.js
-styles/globals.css
 ```
+
+### Color Scheme Guidelines
+
+All components must use the centralized color scheme defined in `tailwind.config.js`. Never use hardcoded color classes like `text-red-400` or `bg-gray-800`.
+
+Instead, use the semantic color classes:
+
+- **Primary Colors**: `text-primary`, `text-primary-light`, `text-primary-hover`, etc.
+- **Background Colors**: `bg-dark`, `bg-dark-lighter`, `bg-dark-card`
+- **Text Colors**: `text-text-primary`, `text-text-secondary`, `text-text-muted`, `text-text-heading`
+- **Border Colors**: `border-dark-border`, `border-primary`
+
+This ensures consistency and makes theme changes possible by updating a single file.
 
 ## Search Functionality
 

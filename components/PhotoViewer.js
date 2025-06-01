@@ -50,7 +50,7 @@ export default function PhotoViewer({ photos, initialIndex = 0, onClose }) {
         {/* Close button */}
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 text-white hover:text-red-400 transition-colors z-10"
+          className="absolute top-4 right-4 text-text-primary hover:text-primary-light transition-colors z-10"
           aria-label="Close"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -61,7 +61,7 @@ export default function PhotoViewer({ photos, initialIndex = 0, onClose }) {
         {/* Previous button */}
         <button 
           onClick={goToPrevious}
-          className="absolute left-4 text-white hover:text-red-400 transition-colors z-10"
+          className="absolute left-4 text-text-primary hover:text-primary-light transition-colors z-10"
           aria-label="Previous photo"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -79,7 +79,7 @@ export default function PhotoViewer({ photos, initialIndex = 0, onClose }) {
           
           {/* Caption */}
           {currentPhoto.caption && (
-            <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white p-4">
+            <div className="absolute bottom-0 left-0 right-0 bg-dark bg-opacity-60 text-text-primary p-4">
               <p>{currentPhoto.caption}</p>
             </div>
           )}
@@ -88,7 +88,7 @@ export default function PhotoViewer({ photos, initialIndex = 0, onClose }) {
         {/* Next button */}
         <button 
           onClick={goToNext}
-          className="absolute right-4 text-white hover:text-red-400 transition-colors z-10"
+          className="absolute right-4 text-text-primary hover:text-primary-light transition-colors z-10"
           aria-label="Next photo"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -97,7 +97,7 @@ export default function PhotoViewer({ photos, initialIndex = 0, onClose }) {
         </button>
         
         {/* Photo counter */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white bg-black bg-opacity-60 px-4 py-2 rounded-full">
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-text-primary bg-dark bg-opacity-60 px-4 py-2 rounded-full">
           {currentIndex + 1} / {photos.length}
         </div>
       </div>

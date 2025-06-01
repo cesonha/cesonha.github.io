@@ -74,16 +74,16 @@ export default function SearchBar({ allContent }) {
             }}
             onFocus={() => query.trim() !== '' && setShowResults(true)}
             placeholder="Search..."
-            className="bg-dark-card border border-gray-700 rounded-full pl-10 pr-4 py-1.5 text-sm focus:outline-none focus:border-red-400 text-white w-full md:w-56 transition-all"
+            className="bg-dark-card border border-dark-border rounded-full pl-10 pr-4 py-1.5 text-sm focus:outline-none focus:border-primary-light text-text-primary w-full md:w-56 transition-all"
           />
-          <div className="absolute left-3 text-gray-400">
+          <div className="absolute left-3 text-text-muted">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </div>
           <button
             type="submit"
-            className="absolute right-2 text-gray-400 hover:text-red-400 transition-colors"
+            className="absolute right-2 text-text-muted hover:text-primary-light transition-colors"
             aria-label="Search"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -95,7 +95,7 @@ export default function SearchBar({ allContent }) {
       
       {/* Floating results preview */}
       {showResults && results.length > 0 && (
-        <div className="absolute right-0 left-0 md:left-auto mt-2 w-full md:w-72 bg-dark-card rounded-md shadow-lg border border-gray-700 overflow-hidden z-50">
+        <div className="absolute right-0 left-0 md:left-auto mt-2 w-full md:w-72 bg-dark-card rounded-md shadow-lg border border-dark-border overflow-hidden z-50">
           <div className="p-2">
             {results.map((result, index) => (
               <Link 
@@ -116,10 +116,10 @@ export default function SearchBar({ allContent }) {
             ))}
             
             {/* View all results link */}
-            <div className="border-t border-gray-700 mt-1 pt-1">
+            <div className="border-t border-dark-border mt-1 pt-1">
               <button 
                 onClick={handleSearch}
-                className="w-full text-center text-xs text-red-300 hover:text-red-200 py-2"
+                className="w-full text-center text-xs text-primary-light hover:text-primary-hover py-2"
               >
                 View all results →
               </button>
