@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { createPhotoAlbum } from '../../lib/admin-utils';
 
 export default function PhotosAdmin() {
   const [isDevMode, setIsDevMode] = useState(false);
@@ -54,30 +55,21 @@ export default function PhotosAdmin() {
     setMessage('');
 
     try {
-      const response = await fetch('/api/dev-only', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          action: 'createAlbum',
-          title,
-          description,
-          slug,
-          photos: photos.filter(photo => photo.url.trim() !== ''),
-        }),
+      const result = await createPhotoAlbum({
+        title,
+        description,
+        slug,
+        photos: photos.filter(photo => photo.url.trim() !== ''),
       });
-
-      const data = await response.json();
       
-      if (response.ok) {
+      if (result.success) {
         setMessage('Album created successfully!');
         setTitle('');
         setDescription('');
         setSlug('');
         setPhotos([{ url: '', caption: '' }]);
       } else {
-        setMessage(`Error: ${data.message}`);
+        setMessage(`Error: ${result.message}`);
       }
     } catch (error) {
       setMessage(`Error: ${error.message}`);

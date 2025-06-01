@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { createBlogPost } from '../../lib/admin-utils';
 
 export default function BlogAdmin() {
   const [isDevMode, setIsDevMode] = useState(false);
@@ -39,24 +40,15 @@ export default function BlogAdmin() {
     setMessage('');
 
     try {
-      const response = await fetch('/api/dev-only', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          action: 'createPost',
-          title,
-          content,
-          excerpt,
-          tags: tags.split(',').map(tag => tag.trim()).filter(tag => tag),
-          slug,
-        }),
+      const result = await createBlogPost({
+        title,
+        content,
+        excerpt,
+        tags: tags.split(',').map(tag => tag.trim()).filter(tag => tag),
+        slug,
       });
-
-      const data = await response.json();
       
-      if (response.ok) {
+      if (result.success) {
         setMessage('Post created successfully!');
         setTitle('');
         setContent('');
@@ -64,7 +56,7 @@ export default function BlogAdmin() {
         setTags('');
         setSlug('');
       } else {
-        setMessage(`Error: ${data.message}`);
+        setMessage(`Error: ${result.message}`);
       }
     } catch (error) {
       setMessage(`Error: ${error.message}`);
