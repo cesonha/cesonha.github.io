@@ -3,7 +3,7 @@ export default function About() {
     <div className="w-full">
       <h1 className="text-4xl font-bold mb-6 text-primary-light">About Me</h1>
       
-      <div className="prose lg:prose-xl max-w-none">
+      <div className="prose prose-invert lg:prose-xl max-w-none">
         <p>
           Hello! I'm Cesar Cano, a Senior Android Developer based in São Paulo, Brazil. I develop native 
           Android applications, libraries, and SDKs at DoorDash. I'm passionate about debugging and understanding 

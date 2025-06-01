@@ -12,7 +12,7 @@ export default function LinksNavigation() {
   ];
 
   return (
-    <div className="mb-8 border-b border-gray-700 pb-4">
+    <div className="mb-8 border-b border-dark-border pb-4">
       <div className="flex flex-wrap justify-center md:justify-start gap-4">
         {linkCategories.map((category) => (
           <Link

@@ -28,7 +28,7 @@ export default function Layout({ children, title = 'Lofi Bits | Personal Website
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-dark text-text-primary">
       <Head>
         <title>{title}</title>
         <meta name="description" content="Lofi Bits - Cesar Cano's personal website" />

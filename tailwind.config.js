@@ -31,48 +31,47 @@ module.exports = {
           heading: '#34D399', // Green-400 for headings (matches primary-light)
         },
       },
-      typography: (theme) => ({
+      typography: {
         DEFAULT: {
           css: {
-            color: theme('colors.text.secondary'),
-            backgroundColor: theme('colors.dark.DEFAULT'),
+            color: '#E2E8F0',
             h1: {
-              color: theme('colors.text.heading'),
+              color: '#34D399',
             },
             h2: {
-              color: theme('colors.text.heading'),
+              color: '#34D399',
             },
             h3: {
-              color: theme('colors.text.heading'),
+              color: '#34D399',
             },
             h4: {
-              color: theme('colors.text.heading'),
+              color: '#34D399',
             },
             strong: {
-              color: theme('colors.primary.light'),
+              color: '#34D399',
             },
             a: {
-              color: theme('colors.primary.light'),
+              color: '#34D399',
               '&:hover': {
-                color: theme('colors.primary.hover'),
+                color: '#059669',
               },
             },
             ul: {
               li: {
                 '&::before': {
-                  color: theme('colors.primary.DEFAULT'),
+                  color: '#10B981',
                 }
               }
             },
             img: {
               marginLeft: 'auto',
               marginRight: 'auto',
-              borderRadius: theme('borderRadius.lg'),
-              boxShadow: theme('boxShadow.md'),
+              borderRadius: '0.5rem',
+              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
             },
           },
         },
-      }),
+      },
     },
   },
   plugins: [
