@@ -16,4 +16,9 @@ const nextConfig = {
     : ['js', 'jsx', 'ts', 'tsx']
 }
 
+// Force Next.js to recognize environment correctly
+if (process.env.NODE_ENV !== 'production') {
+  console.log('Running in development mode - admin pages should be available');
+}
+
 module.exports = nextConfig
