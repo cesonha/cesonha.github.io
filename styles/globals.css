@@ -11,15 +11,15 @@ body {
 }
 
 .prose h1, .prose h2, .prose h3, .prose h4 {
-  @apply text-red-400;
+  @apply text-red-500;
 }
 
 .prose strong {
-  @apply text-orange-300;
+  @apply text-red-300;
 }
 
 .prose a {
-  @apply text-red-300 hover:text-red-200;
+  @apply text-red-400 hover:text-red-300;
 }
 
 .prose ul li::before {
