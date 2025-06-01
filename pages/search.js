@@ -78,7 +78,8 @@ export default function SearchResults({ allContent }) {
               <h2 className="text-xl font-semibold mb-4 text-orange-300 capitalize">
                 {type === 'blog' ? 'Blog Posts' : 
                  type === 'album' ? 'Photo Albums' : 
-                 type === 'photo' ? 'Photos' : 'Art Items'}
+                 type === 'photo' ? 'Photos' : 
+                 type === 'links' ? 'Links' : 'Items'}
                 <span className="text-gray-400 text-sm ml-2">({typeResults.length})</span>
               </h2>
               
