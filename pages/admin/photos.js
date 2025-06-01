@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { createPhotoAlbum } from '../../lib/admin-utils';
-import { getAllAlbums, getAlbumById } from '../../lib/photos';
 
 export default function PhotosAdmin() {
   const [isDevMode, setIsDevMode] = useState(false);
@@ -25,13 +24,17 @@ export default function PhotosAdmin() {
     if (process.env.NODE_ENV !== 'development') {
       router.push('/');
     } else {
-      // Load existing albums
-      try {
-        const albums = getAllAlbums();
-        setExistingAlbums(albums);
-      } catch (error) {
-        console.error('Error loading albums:', error);
-      }
+      // Load existing albums via API
+      fetch('/api/admin/get-albums')
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            setExistingAlbums(data.albums);
+          }
+        })
+        .catch(error => {
+          console.error('Error loading albums:', error);
+        });
     }
   }, [router]);
 
@@ -48,23 +51,30 @@ export default function PhotosAdmin() {
   // Load album data when selecting an existing album
   useEffect(() => {
     if (selectedAlbum && mode === 'edit') {
-      try {
-        const album = getAlbumById(selectedAlbum);
-        setTitle(album.title || '');
-        setDescription(album.description || '');
-        setSlug(selectedAlbum);
-        
-        // Convert album photos to the format used in the form
-        const formattedPhotos = album.photos?.map(photo => ({
-          src: photo.src || '',
-          caption: photo.caption || ''
-        })) || [{ src: '', caption: '' }];
-        
-        setPhotos(formattedPhotos);
-      } catch (error) {
-        console.error('Error loading album:', error);
-        setMessage(`Error: Could not load album data`);
-      }
+      fetch(`/api/admin/get-album?id=${selectedAlbum}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            const album = data.album;
+            setTitle(album.title || '');
+            setDescription(album.description || '');
+            setSlug(selectedAlbum);
+            
+            // Convert album photos to the format used in the form
+            const formattedPhotos = album.photos?.map(photo => ({
+              src: photo.src || '',
+              caption: photo.caption || ''
+            })) || [{ src: '', caption: '' }];
+            
+            setPhotos(formattedPhotos);
+          } else {
+            setMessage(`Error: ${data.message}`);
+          }
+        })
+        .catch(error => {
+          console.error('Error loading album:', error);
+          setMessage(`Error: Could not load album data`);
+        });
     }
   }, [selectedAlbum, mode]);
 
