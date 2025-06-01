@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-export default function Home() {
+export default function Index() {
   const router = useRouter();
   
   useEffect(() => {
-    router.push('/about');
+    router.push('/home');
   }, [router]);
   
   return null;
