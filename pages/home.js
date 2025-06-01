@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { getAllPosts } from '../lib/posts';
 import { getAllAlbums } from '../lib/photos';
-import { getAllArtCategories, getArtItems } from '../lib/art';
+import { getAllLinkCategories, getLinkItems } from '../lib/links';
 
 export default function Home({ latestPost, featuredAlbums, randomArtItem }) {
   return (
@@ -67,33 +67,37 @@ export default function Home({ latestPost, featuredAlbums, randomArtItem }) {
         </div>
       </section>
       
-      {/* Random Art Recommendation */}
+      {/* Random Link Recommendation */}
       <section className="mb-8">
         <h2 className="text-2xl font-bold mb-4 text-red-300">Check This Out</h2>
-        {randomArtItem ? (
+        {randomLinkItem ? (
           <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-red-400 transition-colors">
             <div className="flex flex-col md:flex-row gap-6">
-              {randomArtItem.image && (
+              {randomLinkItem.image && (
                 <div className="md:w-1/3">
                   <img 
-                    src={randomArtItem.image} 
-                    alt={randomArtItem.title}
+                    src={randomLinkItem.image} 
+                    alt={randomLinkItem.title}
                     className="w-full h-48 object-cover rounded"
                   />
                 </div>
               )}
               <div className="md:w-2/3">
-                <h3 className="text-xl font-semibold mb-2 text-red-200">{randomArtItem.title}</h3>
-                <p className="text-gray-400 mb-2">From {randomArtItem.category} collection</p>
-                <p className="text-gray-300">{randomArtItem.description}</p>
-                <Link href={`/art/${randomArtItem.categorySlug}`}>
+                <h3 className="text-xl font-semibold mb-2 text-red-200">
+                  <a href={randomLinkItem.link} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                    {randomLinkItem.title}
+                  </a>
+                </h3>
+                <p className="text-gray-400 mb-2">From {randomLinkItem.category} collection</p>
+                <p className="text-gray-300">{randomLinkItem.description}</p>
+                <Link href={`/links/${randomLinkItem.categorySlug}`}>
                   <p className="mt-4 text-red-300 hover:text-red-200 cursor-pointer">See more like this →</p>
                 </Link>
               </div>
             </div>
           </div>
         ) : (
-          <p className="text-gray-400">No art items available.</p>
+          <p className="text-gray-400">No link items available.</p>
         )}
       </section>
     </div>
@@ -109,19 +113,19 @@ export async function getStaticProps() {
   const allAlbums = getAllAlbums();
   const featuredAlbums = allAlbums.slice(0, 5);
   
-  // Get random art item
-  const artCategories = getAllArtCategories();
-  let randomArtItem = null;
+  // Get random link item
+  const linkCategories = getAllLinkCategories();
+  let randomLinkItem = null;
   
-  if (artCategories.length > 0) {
+  if (linkCategories.length > 0) {
     // Pick a random category
-    const randomCategory = artCategories[Math.floor(Math.random() * artCategories.length)];
-    const categoryItems = getArtItems(randomCategory);
+    const randomCategory = linkCategories[Math.floor(Math.random() * linkCategories.length)];
+    const categoryItems = getLinkItems(randomCategory);
     
     if (categoryItems.length > 0) {
       // Pick a random item from the category
       const randomItem = categoryItems[Math.floor(Math.random() * categoryItems.length)];
-      randomArtItem = {
+      randomLinkItem = {
         ...randomItem,
         category: randomCategory.charAt(0).toUpperCase() + randomCategory.slice(1),
         categorySlug: randomCategory
@@ -133,7 +137,7 @@ export async function getStaticProps() {
     props: {
       latestPost,
       featuredAlbums,
-      randomArtItem
+      randomLinkItem
     }
   };
 }

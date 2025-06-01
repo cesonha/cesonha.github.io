@@ -47,18 +47,18 @@ lib/photos.js
 content/albums/[relevant-album].json
 ```
 
-## Art Section
+## Links Section
 
-For art section modifications:
+For links section modifications:
 
 ```
-pages/art/index.js
-pages/art/music.js
-pages/art/illustration.js
-pages/art/objects.js
-components/ArtNavigation.js
-lib/art.js
-content/art/[category]/items.json
+pages/links/index.js
+pages/links/music.js
+pages/links/illustration.js
+pages/links/objects.js
+components/LinksNavigation.js
+lib/links.js
+content/links/[category]/items.json
 ```
 
 ## Styling and Theming
@@ -159,7 +159,7 @@ Add to context:
 pages/home.js
 lib/posts.js
 lib/photos.js
-lib/art.js
+lib/links.js
 ```
 
 ### Example 2: Creating a new blog post template

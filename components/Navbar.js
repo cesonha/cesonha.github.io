@@ -9,7 +9,7 @@ export default function Navbar({ allContent }) {
     { label: 'Home', path: '/home' },
     { label: 'Blog', path: '/blog' },
     { label: 'Photos', path: '/photos' },
-    { label: 'Art', path: '/art' },
+    { label: 'Links', path: '/links' },
     { label: 'About', path: '/about' },
   ];
   
