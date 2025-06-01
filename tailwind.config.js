@@ -34,15 +34,19 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            color: theme('colors.gray.300'),
+            color: theme('colors.text.secondary'),
+            backgroundColor: theme('colors.dark.DEFAULT'),
             h1: {
-              color: theme('colors.primary.light'),
+              color: theme('colors.text.heading'),
             },
             h2: {
-              color: theme('colors.primary.light'),
+              color: theme('colors.text.heading'),
             },
             h3: {
-              color: theme('colors.primary.light'),
+              color: theme('colors.text.heading'),
+            },
+            h4: {
+              color: theme('colors.text.heading'),
             },
             strong: {
               color: theme('colors.primary.light'),
@@ -52,6 +56,19 @@ module.exports = {
               '&:hover': {
                 color: theme('colors.primary.hover'),
               },
+            },
+            ul: {
+              li: {
+                '&::before': {
+                  color: theme('colors.primary.DEFAULT'),
+                }
+              }
+            },
+            img: {
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              borderRadius: theme('borderRadius.lg'),
+              boxShadow: theme('boxShadow.md'),
             },
           },
         },

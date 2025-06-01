@@ -60,7 +60,7 @@ export default function Navbar({ allContent }) {
                 href={item.path} 
                 key={item.path}
                 className={`hover:text-primary transition-colors ${
-                  router.pathname === item.path ? 'text-primary font-bold' : 'text-gray-300'
+                  router.pathname === item.path ? 'text-primary font-bold' : 'text-text-secondary'
                 }`}
               >
                 {item.label}
@@ -77,7 +77,7 @@ export default function Navbar({ allContent }) {
                   key={link.label}
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-accent transition-colors"
+                  className="text-text-secondary hover:text-primary-light transition-colors"
                   title={link.label}
                 >
                   <span className="sr-only">{link.label}</span>

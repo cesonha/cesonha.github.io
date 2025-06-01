@@ -33,7 +33,7 @@ export default function Album({ album }) {
           {album.photos.map((photo, index) => (
             <div 
               key={index} 
-              className="bg-dark-card rounded shadow-md overflow-hidden border border-gray-800 cursor-pointer transition-transform hover:scale-[1.02]"
+              className="bg-dark-card rounded shadow-md overflow-hidden border border-dark-border cursor-pointer transition-transform hover:scale-[1.02]"
               onClick={() => openPhotoViewer(index)}
             >
               <div className="relative h-64 w-full">
@@ -45,7 +45,7 @@ export default function Album({ album }) {
               </div>
               {photo.caption && (
                 <div className="p-4">
-                  <p className="text-gray-300">{photo.caption}</p>
+                  <p className="text-text-secondary">{photo.caption}</p>
                 </div>
               )}
             </div>

@@ -21,7 +21,7 @@ export default function LinksNavigation() {
             className={`px-4 py-2 rounded-md transition-colors ${
               currentPath === category.path
                 ? 'bg-primary text-text-primary'
-                : 'bg-dark-card text-gray-300 hover:bg-gray-700'
+                : 'bg-dark-card text-text-secondary hover:bg-dark-lighter'
             }`}
           >
             {category.title}
