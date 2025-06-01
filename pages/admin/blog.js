@@ -49,12 +49,11 @@ export default function BlogAdmin() {
       });
       
       if (result.success) {
-        setMessage('Post created successfully!');
-        setTitle('');
-        setContent('');
-        setExcerpt('');
-        setTags('');
-        setSlug('');
+        setMessage(result.message);
+        // Don't clear the form in development mode so users can see what they created
+        
+        // Display preview in console
+        console.log('Preview of created content:', result.preview);
       } else {
         setMessage(`Error: ${result.message}`);
       }

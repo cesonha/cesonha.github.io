@@ -99,17 +99,11 @@ export default function PhotosAdmin() {
       });
       
       if (result.success) {
-        setMessage(`Album ${mode === 'create' ? 'created' : 'updated'} successfully!`);
-        if (mode === 'create') {
-          setTitle('');
-          setDescription('');
-          setSlug('');
-          setPhotos([{ src: '', caption: '' }]);
-          
-          // Refresh the album list
-          const albums = getAllAlbums();
-          setExistingAlbums(albums);
-        }
+        setMessage(result.message);
+        // Don't clear the form in development mode so users can see what they created
+        
+        // Display preview in console
+        console.log('Preview of album data:', result.preview);
       } else {
         setMessage(`Error: ${result.message}`);
       }
