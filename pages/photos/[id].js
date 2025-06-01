@@ -1,6 +1,20 @@
+import { useState } from 'react';
 import { getAlbumById, getAlbumIds } from '../../lib/photos';
+import PhotoViewer from '../../components/PhotoViewer';
 
 export default function Album({ album }) {
+  const [viewerOpen, setViewerOpen] = useState(false);
+  const [initialPhotoIndex, setInitialPhotoIndex] = useState(0);
+  
+  const openPhotoViewer = (index) => {
+    setInitialPhotoIndex(index);
+    setViewerOpen(true);
+  };
+  
+  const closePhotoViewer = () => {
+    setViewerOpen(false);
+  };
+  
   return (
     <div>
       <h1 className="text-3xl font-bold mb-2 text-red-400">{album.title}</h1>
@@ -9,7 +23,11 @@ export default function Album({ album }) {
       {album.photos?.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {album.photos.map((photo, index) => (
-            <div key={index} className="bg-dark-card rounded shadow-md overflow-hidden border border-gray-800">
+            <div 
+              key={index} 
+              className="bg-dark-card rounded shadow-md overflow-hidden border border-gray-800 cursor-pointer transition-transform hover:scale-[1.02]"
+              onClick={() => openPhotoViewer(index)}
+            >
               <div className="relative h-64 w-full">
                 <img
                   src={photo.src}
@@ -27,6 +45,15 @@ export default function Album({ album }) {
         </div>
       ) : (
         <p>No photos in this album.</p>
+      )}
+      
+      {/* Photo Viewer Modal */}
+      {viewerOpen && album.photos && (
+        <PhotoViewer 
+          photos={album.photos} 
+          initialIndex={initialPhotoIndex} 
+          onClose={closePhotoViewer} 
+        />
       )}
     </div>
   );
