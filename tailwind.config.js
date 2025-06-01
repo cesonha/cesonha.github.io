@@ -9,12 +9,12 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#EF4444', // Red
-          hover: '#DC2626',
+          DEFAULT: '#E53E3E', // Red-600
+          hover: '#C53030', // Red-700
         },
         accent: {
-          DEFAULT: '#F97316', // Orange
-          hover: '#EA580C',
+          DEFAULT: '#FC8181', // Red-300
+          hover: '#F56565', // Red-400
         },
         dark: {
           DEFAULT: '#111827', // Dark gray
@@ -27,21 +27,21 @@ module.exports = {
           css: {
             color: theme('colors.gray.300'),
             h1: {
-              color: theme('colors.red.400'),
+              color: theme('colors.red.500'),
             },
             h2: {
-              color: theme('colors.red.400'),
+              color: theme('colors.red.500'),
             },
             h3: {
-              color: theme('colors.red.400'),
+              color: theme('colors.red.500'),
             },
             strong: {
-              color: theme('colors.orange.300'),
+              color: theme('colors.red.300'),
             },
             a: {
-              color: theme('colors.red.300'),
+              color: theme('colors.red.400'),
               '&:hover': {
-                color: theme('colors.red.200'),
+                color: theme('colors.red.300'),
               },
             },
           },
