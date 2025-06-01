@@ -85,7 +85,7 @@ export default function BlogAdmin() {
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label htmlFor="title" className="block text-gray-300 mb-2">Title</label>
+          <label htmlFor="title" className="block text-text-secondary mb-2">Title</label>
           <input
             type="text"
             id="title"
@@ -97,46 +97,46 @@ export default function BlogAdmin() {
         </div>
 
         <div>
-          <label htmlFor="slug" className="block text-gray-300 mb-2">Slug (file name)</label>
+          <label htmlFor="slug" className="block text-text-secondary mb-2">Slug (file name)</label>
           <input
             type="text"
             id="slug"
             value={slug}
             onChange={(e) => setSlug(e.target.value)}
-            className="w-full p-2 bg-gray-800 border border-gray-700 rounded text-gray-200"
+            className="w-full p-2 bg-dark-card border border-dark-border rounded text-text-primary"
             required
           />
         </div>
 
         <div>
-          <label htmlFor="excerpt" className="block text-gray-300 mb-2">Excerpt</label>
+          <label htmlFor="excerpt" className="block text-text-secondary mb-2">Excerpt</label>
           <textarea
             id="excerpt"
             value={excerpt}
             onChange={(e) => setExcerpt(e.target.value)}
-            className="w-full p-2 bg-gray-800 border border-gray-700 rounded text-gray-200 h-20"
+            className="w-full p-2 bg-dark-card border border-dark-border rounded text-text-primary h-20"
           />
         </div>
 
         <div>
-          <label htmlFor="tags" className="block text-gray-300 mb-2">Tags (comma separated)</label>
+          <label htmlFor="tags" className="block text-text-secondary mb-2">Tags (comma separated)</label>
           <input
             type="text"
             id="tags"
             value={tags}
             onChange={(e) => setTags(e.target.value)}
-            className="w-full p-2 bg-gray-800 border border-gray-700 rounded text-gray-200"
+            className="w-full p-2 bg-dark-card border border-dark-border rounded text-text-primary"
             placeholder="tag1, tag2, tag3"
           />
         </div>
 
         <div>
-          <label htmlFor="content" className="block text-gray-300 mb-2">Content (Markdown)</label>
+          <label htmlFor="content" className="block text-text-secondary mb-2">Content (Markdown)</label>
           <textarea
             id="content"
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            className="w-full p-2 bg-gray-800 border border-gray-700 rounded text-gray-200 h-64 font-mono"
+            className="w-full p-2 bg-dark-card border border-dark-border rounded text-text-primary h-64 font-mono"
             required
           />
         </div>

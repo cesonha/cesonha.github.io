@@ -245,12 +245,12 @@ export default function PhotosAdmin() {
 
       {mode === 'edit' && (
         <div className="mb-6">
-          <label htmlFor="existingAlbum" className="block text-gray-300 mb-2">Select Album to Edit</label>
+          <label htmlFor="existingAlbum" className="block text-text-secondary mb-2">Select Album to Edit</label>
           <select
             id="existingAlbum"
             value={selectedAlbum}
             onChange={(e) => setSelectedAlbum(e.target.value)}
-            className="w-full p-2 bg-gray-800 border border-gray-700 rounded text-gray-200"
+            className="w-full p-2 bg-dark-card border border-dark-border rounded text-text-primary"
             required
           >
             <option value="">-- Select an album --</option>
@@ -265,50 +265,50 @@ export default function PhotosAdmin() {
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label htmlFor="title" className="block text-gray-300 mb-2">Album Title</label>
+          <label htmlFor="title" className="block text-text-secondary mb-2">Album Title</label>
           <input
             type="text"
             id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full p-2 bg-gray-800 border border-gray-700 rounded text-gray-200"
+            className="w-full p-2 bg-dark-card border border-dark-border rounded text-text-primary"
             required
           />
         </div>
 
         <div>
-          <label htmlFor="slug" className="block text-gray-300 mb-2">Slug (file name)</label>
+          <label htmlFor="slug" className="block text-text-secondary mb-2">Slug (file name)</label>
           <input
             type="text"
             id="slug"
             value={slug}
             onChange={(e) => setSlug(e.target.value)}
-            className="w-full p-2 bg-gray-800 border border-gray-700 rounded text-gray-200"
+            className="w-full p-2 bg-dark-card border border-dark-border rounded text-text-primary"
             required
             readOnly={mode === 'edit'}
           />
           {mode === 'edit' && (
-            <p className="text-gray-400 text-sm mt-1">Slug cannot be changed when editing</p>
+            <p className="text-text-muted text-sm mt-1">Slug cannot be changed when editing</p>
           )}
         </div>
 
         <div>
-          <label htmlFor="description" className="block text-gray-300 mb-2">Description</label>
+          <label htmlFor="description" className="block text-text-secondary mb-2">Description</label>
           <textarea
             id="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="w-full p-2 bg-gray-800 border border-gray-700 rounded text-gray-200 h-20"
+            className="w-full p-2 bg-dark-card border border-dark-border rounded text-text-primary h-20"
           />
         </div>
 
         <div>
           <div className="flex justify-between items-center mb-2">
-            <label className="text-gray-300">Photos</label>
+            <label className="text-text-secondary">Photos</label>
             <button
               type="button"
               onClick={addPhotoField}
-              className="px-2 py-1 bg-gray-700 text-white rounded hover:bg-gray-600 text-sm"
+              className="px-2 py-1 bg-dark-lighter text-text-primary rounded hover:bg-dark-card text-sm"
             >
               Add Photo
             </button>
@@ -323,14 +323,14 @@ export default function PhotosAdmin() {
 
           <div className="space-y-4">
             {photos.map((photo, index) => (
-              <div key={index} className="p-4 border border-gray-700 rounded">
+              <div key={index} className="p-4 border border-dark-border rounded">
                 <div className="flex justify-between items-center mb-2">
-                  <h3 className="text-gray-300">Photo {index + 1}</h3>
+                  <h3 className="text-text-secondary">Photo {index + 1}</h3>
                   {photos.length > 1 && (
                     <button
                       type="button"
                       onClick={() => removePhotoField(index)}
-                      className="text-red-400 hover:text-red-300 text-sm"
+                      className="text-primary-light hover:text-primary-hover text-sm"
                     >
                       Remove
                     </button>
@@ -338,14 +338,14 @@ export default function PhotosAdmin() {
                 </div>
                 
                 <div className="mb-2">
-                  <label className="block text-gray-400 mb-1 text-sm">Image URL (relative to public folder)</label>
+                  <label className="block text-text-muted mb-1 text-sm">Image URL (relative to public folder)</label>
                   <div className="flex">
                     <input
                       type="text"
                       value={photo.src === 'uploading' ? 'Uploading...' : photo.src}
                       onChange={(e) => updatePhotoField(index, 'src', e.target.value)}
                       placeholder="images/photos/album-name/photo1.jpg"
-                      className={`w-full p-2 bg-gray-800 border border-gray-700 rounded-l text-gray-200 ${photo.src === 'uploading' ? 'opacity-50' : ''}`}
+                      className={`w-full p-2 bg-dark-card border border-dark-border rounded-l text-text-primary ${photo.src === 'uploading' ? 'opacity-50' : ''}`}
                       disabled={photo.src === 'uploading'}
                     />
                     <button
@@ -355,7 +355,7 @@ export default function PhotosAdmin() {
                           fileInputRef.current.click();
                         }
                       }}
-                      className="px-3 py-2 bg-gray-700 text-white rounded-r hover:bg-gray-600 text-sm"
+                      className="px-3 py-2 bg-dark-lighter text-text-primary rounded-r hover:bg-dark-card text-sm"
                     >
                       Browse
                     </button>
@@ -365,7 +365,7 @@ export default function PhotosAdmin() {
                       <img 
                         src={photo.src} 
                         alt="Preview" 
-                        className="h-20 object-cover rounded border border-gray-700" 
+                        className="h-20 object-cover rounded border border-dark-border" 
                         onError={(e) => {
                           e.target.onerror = null;
                           e.target.src = '/placeholder-image.jpg';
@@ -377,12 +377,12 @@ export default function PhotosAdmin() {
                 </div>
                 
                 <div>
-                  <label className="block text-gray-400 mb-1 text-sm">Caption</label>
+                  <label className="block text-text-muted mb-1 text-sm">Caption</label>
                   <input
                     type="text"
                     value={photo.caption}
                     onChange={(e) => updatePhotoField(index, 'caption', e.target.value)}
-                    className="w-full p-2 bg-gray-800 border border-gray-700 rounded text-gray-200"
+                    className="w-full p-2 bg-dark-card border border-dark-border rounded text-text-primary"
                   />
                 </div>
               </div>

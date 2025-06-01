@@ -38,25 +38,25 @@ export default function ArtAdmin() {
 
       <div className="bg-gray-800 border border-gray-700 rounded-lg p-6 mb-8">
         <h2 className="text-xl font-bold mb-4 text-primary-light">Art Categories</h2>
-        <p className="text-gray-300 mb-4">
+        <p className="text-text-secondary mb-4">
           The art section is organized into categories. Each category has its own page and items.
         </p>
-        <p className="text-gray-300 mb-4">
+        <p className="text-text-secondary mb-4">
           Currently, the following categories are available:
         </p>
-        <ul className="list-disc pl-5 text-gray-300 mb-4">
+        <ul className="list-disc pl-5 text-text-secondary mb-4">
           <li>Music (/art/music)</li>
           <li>Illustration (/art/illustration)</li>
           <li>Objects (/art/objects)</li>
         </ul>
-        <p className="text-gray-300">
+        <p className="text-text-secondary">
           To add or edit items, modify the corresponding JSON files in the content/art/[category]/items.json files.
         </p>
       </div>
 
       <div className="bg-gray-800 border border-gray-700 rounded-lg p-6">
         <h2 className="text-xl font-bold mb-4 text-primary-light">Coming Soon</h2>
-        <p className="text-gray-300">
+        <p className="text-text-secondary">
           A visual editor for art items will be added in a future update.
         </p>
       </div>

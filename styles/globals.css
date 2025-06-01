@@ -2,30 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-dark text-text-primary;
+@layer base {
+  body {
+    @apply bg-dark text-text-primary;
+  }
 }
 
-.prose {
-  @apply text-text-primary;
-}
-
-.prose h1, .prose h2, .prose h3, .prose h4 {
-  @apply text-primary-light;
-}
-
-.prose strong {
-  @apply text-primary-light;
-}
-
-.prose a {
-  @apply text-primary-light hover:text-primary-hover;
-}
-
-.prose ul li::before {
-  @apply text-primary;
-}
-
-.prose img {
-  @apply mx-auto rounded-lg shadow-md;
+@layer components {
+  .prose {
+    @apply text-text-primary;
+  }
+  
+  .prose h1, .prose h2, .prose h3, .prose h4 {
+    @apply text-primary-light;
+  }
+  
+  .prose strong {
+    @apply text-primary-light;
+  }
+  
+  .prose a {
+    @apply text-primary-light hover:text-primary-hover;
+  }
+  
+  .prose ul li::before {
+    @apply text-primary;
+  }
+  
+  .prose img {
+    @apply mx-auto rounded-lg shadow-md;
+  }
 }
