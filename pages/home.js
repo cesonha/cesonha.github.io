@@ -4,7 +4,7 @@ import { getAllPosts } from '../lib/posts';
 import { getAllAlbums } from '../lib/photos';
 import { getAllLinkCategories, getLinkItems } from '../lib/links';
 
-export default function Home({ latestPost, featuredAlbums, randomArtItem }) {
+export default function Home({ latestPost, featuredAlbums, randomLinkItem }) {
   return (
     <div className="w-full">
       <h1 className="text-4xl font-bold mb-8 text-red-400">Welcome</h1>
