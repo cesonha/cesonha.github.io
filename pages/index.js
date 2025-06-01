@@ -1,12 +1,7 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import Home from './home';
 
-export default function Index() {
-  const router = useRouter();
-  
-  useEffect(() => {
-    router.push('/home');
-  }, [router]);
-  
-  return null;
+export default function Index(props) {
+  return <Home {...props} />;
 }
+
+export { getStaticProps } from './home';
