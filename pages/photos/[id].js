@@ -18,12 +18,14 @@ export default function Album({ album }) {
   
   return (
     <div className="w-full">
-      <Link href="/photos">
-        <span className="inline-block mb-4 px-4 py-2 bg-gray-800 text-gray-300 rounded hover:bg-gray-700 transition-colors cursor-pointer">
-          ← Back to Albums
-        </span>
-      </Link>
-      <h1 className="text-3xl font-bold mb-2 text-red-400">{album.title}</h1>
+      <div className="flex justify-between items-center mb-2">
+        <h1 className="text-3xl font-bold text-red-400">{album.title}</h1>
+        <Link href="/photos">
+          <span className="inline-block px-4 py-2 bg-gray-800 text-gray-300 rounded hover:bg-gray-700 transition-colors cursor-pointer">
+            ← Back to Albums
+          </span>
+        </Link>
+      </div>
       <p className="text-gray-300 mb-6">{album.description}</p>
       
       {album.photos?.length > 0 ? (
