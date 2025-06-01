@@ -21,6 +21,7 @@ For changes to the site's navigation, header, or overall layout:
 components/Navbar.js
 components/Layout.js
 components/Footer.js
+pages/home.js
 ```
 
 ## Blog Functionality
@@ -149,6 +150,16 @@ package.json
 Add to context:
 ```
 components/Navbar.js
+```
+
+### Example 4: Modifying the home page
+
+Add to context:
+```
+pages/home.js
+lib/posts.js
+lib/photos.js
+lib/art.js
 ```
 
 ### Example 2: Creating a new blog post template
