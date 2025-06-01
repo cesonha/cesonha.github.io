@@ -105,8 +105,8 @@ export default function SearchBar({ allContent }) {
                 className="block px-3 py-2 hover:bg-gray-800 rounded transition-colors"
               >
                 <div className="flex justify-between items-center">
-                  <h4 className="text-sm font-medium text-white truncate max-w-[180px]">{result.title}</h4>
-                  <span className="text-xs px-2 py-1 rounded-full bg-dark-lighter text-red-400">
+                  <h4 className="text-sm font-medium text-text-primary truncate max-w-[180px]">{result.title}</h4>
+                  <span className="text-xs px-2 py-1 rounded-full bg-dark-lighter text-primary-light">
                     {result.type === 'blog' ? 'Blog' : 
                      result.type === 'album' ? 'Album' : 
                      result.type === 'photo' ? 'Photo' : 'Art'}

@@ -71,9 +71,9 @@ export default function BlogAdmin() {
   return (
     <div className="max-w-4xl mx-auto py-8">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-red-400">Create Blog Post</h1>
+        <h1 className="text-3xl font-bold text-primary-light">Create Blog Post</h1>
         <Link href="/admin" legacyBehavior>
-          <a className="text-red-400 hover:text-red-300 cursor-pointer">Back to Dashboard</a>
+          <a className="text-primary-light hover:text-primary-hover cursor-pointer">Back to Dashboard</a>
         </Link>
       </div>
 
@@ -91,7 +91,7 @@ export default function BlogAdmin() {
             id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full p-2 bg-gray-800 border border-gray-700 rounded text-gray-200"
+            className="w-full p-2 bg-dark-card border border-dark-border rounded text-text-primary"
             required
           />
         </div>
@@ -144,7 +144,7 @@ export default function BlogAdmin() {
         <button
           type="submit"
           disabled={isLoading}
-          className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 disabled:opacity-50"
+          className="px-4 py-2 bg-primary text-text-primary rounded hover:bg-primary-hover disabled:opacity-50"
         >
           {isLoading ? 'Creating...' : 'Create Post'}
         </button>

@@ -206,11 +206,11 @@ export default function PhotosAdmin() {
   return (
     <div className="max-w-4xl mx-auto py-8">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-red-400">
+        <h1 className="text-3xl font-bold text-primary-light">
           {mode === 'create' ? 'Create Photo Album' : 'Edit Photo Album'}
         </h1>
         <Link href="/admin" legacyBehavior>
-          <a className="text-red-400 hover:text-red-300 cursor-pointer">Back to Dashboard</a>
+          <a className="text-primary-light hover:text-primary-hover cursor-pointer">Back to Dashboard</a>
         </Link>
       </div>
 
@@ -219,8 +219,8 @@ export default function PhotosAdmin() {
           onClick={() => switchMode('create')}
           className={`px-4 py-2 rounded ${
             mode === 'create' 
-              ? 'bg-red-500 text-white' 
-              : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+              ? 'bg-primary text-text-primary' 
+              : 'bg-dark-lighter text-text-secondary hover:bg-dark-card'
           }`}
         >
           Create New Album
@@ -238,7 +238,7 @@ export default function PhotosAdmin() {
       </div>
 
       {message && (
-        <div className={`p-4 mb-6 rounded ${message.includes('Error') ? 'bg-red-900/50 text-red-200' : 'bg-green-900/50 text-green-200'}`}>
+        <div className={`p-4 mb-6 rounded ${message.includes('Error') ? 'bg-red-900/50 text-primary-lighter' : 'bg-green-900/50 text-green-200'}`}>
           {message}
         </div>
       )}

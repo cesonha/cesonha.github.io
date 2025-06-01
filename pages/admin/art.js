@@ -24,9 +24,9 @@ export default function ArtAdmin() {
   return (
     <div className="max-w-4xl mx-auto py-8">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-red-400">Art Admin</h1>
+        <h1 className="text-3xl font-bold text-primary-light">Art Admin</h1>
         <Link href="/admin" legacyBehavior>
-          <a className="text-red-400 hover:text-red-300 cursor-pointer">Back to Dashboard</a>
+          <a className="text-primary-light hover:text-primary-hover cursor-pointer">Back to Dashboard</a>
         </Link>
       </div>
 
@@ -37,7 +37,7 @@ export default function ArtAdmin() {
       )}
 
       <div className="bg-gray-800 border border-gray-700 rounded-lg p-6 mb-8">
-        <h2 className="text-xl font-bold mb-4 text-orange-300">Art Categories</h2>
+        <h2 className="text-xl font-bold mb-4 text-primary-light">Art Categories</h2>
         <p className="text-gray-300 mb-4">
           The art section is organized into categories. Each category has its own page and items.
         </p>
@@ -55,7 +55,7 @@ export default function ArtAdmin() {
       </div>
 
       <div className="bg-gray-800 border border-gray-700 rounded-lg p-6">
-        <h2 className="text-xl font-bold mb-4 text-orange-300">Coming Soon</h2>
+        <h2 className="text-xl font-bold mb-4 text-primary-light">Coming Soon</h2>
         <p className="text-gray-300">
           A visual editor for art items will be added in a future update.
         </p>
