@@ -39,6 +39,20 @@ export default function AdminDashboard() {
             <p className="text-gray-400">Create and manage photo albums</p>
           </a>
         </Link>
+        
+        <Link href="/admin/art" legacyBehavior>
+          <a className="p-6 bg-gray-800 border border-gray-700 rounded-lg hover:border-red-400 transition-colors cursor-pointer block">
+            <h2 className="text-xl font-bold mb-2 text-red-400">Art Items</h2>
+            <p className="text-gray-400">View information about art categories</p>
+          </a>
+        </Link>
+        
+        <Link href="/admin/test" legacyBehavior>
+          <a className="p-6 bg-gray-800 border border-gray-700 rounded-lg hover:border-red-400 transition-colors cursor-pointer block">
+            <h2 className="text-xl font-bold mb-2 text-red-400">Test Page</h2>
+            <p className="text-gray-400">Test environment configuration</p>
+          </a>
+        </Link>
       </div>
     </div>
   );

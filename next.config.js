@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Always use export for consistency, but we'll handle admin pages differently
-  output: 'export',
+  // Only use export in production
+  ...(process.env.NODE_ENV === 'production' ? {
+    output: 'export',
+  } : {}),
   trailingSlash: true,
   images: {
     unoptimized: true // Required for static export
@@ -17,5 +19,7 @@ const nextConfig = {
     return config;
   }
 }
+
+console.log(`Running in ${process.env.NODE_ENV} mode - output: ${process.env.NODE_ENV === 'production' ? 'export' : 'server'}`);
 
 module.exports = nextConfig

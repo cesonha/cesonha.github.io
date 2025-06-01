@@ -1,0 +1,65 @@
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+
+export default function ArtAdmin() {
+  const [isDevMode, setIsDevMode] = useState(false);
+  const router = useRouter();
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    // Check if we're in development mode
+    setIsDevMode(process.env.NODE_ENV === 'development');
+    
+    // Redirect to home if not in development mode
+    if (process.env.NODE_ENV !== 'development') {
+      router.push('/');
+    }
+  }, [router]);
+
+  if (!isDevMode) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div className="max-w-4xl mx-auto py-8">
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold text-red-400">Art Admin</h1>
+        <Link href="/admin" legacyBehavior>
+          <a className="text-red-400 hover:text-red-300 cursor-pointer">Back to Dashboard</a>
+        </Link>
+      </div>
+
+      {message && (
+        <div className={`p-4 mb-6 rounded ${message.includes('Error') ? 'bg-red-900/50 text-red-200' : 'bg-green-900/50 text-green-200'}`}>
+          {message}
+        </div>
+      )}
+
+      <div className="bg-gray-800 border border-gray-700 rounded-lg p-6 mb-8">
+        <h2 className="text-xl font-bold mb-4 text-orange-300">Art Categories</h2>
+        <p className="text-gray-300 mb-4">
+          The art section is organized into categories. Each category has its own page and items.
+        </p>
+        <p className="text-gray-300 mb-4">
+          Currently, the following categories are available:
+        </p>
+        <ul className="list-disc pl-5 text-gray-300 mb-4">
+          <li>Music (/art/music)</li>
+          <li>Illustration (/art/illustration)</li>
+          <li>Objects (/art/objects)</li>
+        </ul>
+        <p className="text-gray-300">
+          To add or edit items, modify the corresponding JSON files in the content/art/[category]/items.json files.
+        </p>
+      </div>
+
+      <div className="bg-gray-800 border border-gray-700 rounded-lg p-6">
+        <h2 className="text-xl font-bold mb-4 text-orange-300">Coming Soon</h2>
+        <p className="text-gray-300">
+          A visual editor for art items will be added in a future update.
+        </p>
+      </div>
+    </div>
+  );
+}
