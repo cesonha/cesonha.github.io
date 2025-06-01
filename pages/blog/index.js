@@ -3,7 +3,7 @@ import { getAllPosts } from '../../lib/posts';
 
 export default function Blog({ posts }) {
   return (
-    <div>
+    <div className="w-full">
       <h1 className="text-3xl font-bold mb-6 text-red-400">Blog</h1>
       
       {posts.length === 0 ? (

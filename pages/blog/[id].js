@@ -3,7 +3,7 @@ import { getPostById, getPostIds } from '../../lib/posts';
 
 export default function Post({ post }) {
   return (
-    <article className="max-w-3xl mx-auto">
+    <article className="w-full">
       <header className="mb-8">
         <h1 className="text-3xl font-bold mb-2 text-red-400">{post.title}</h1>
         <div className="text-gray-400">

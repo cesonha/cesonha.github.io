@@ -62,9 +62,9 @@ export default function SearchBar({ allContent }) {
   };
 
   return (
-    <div className="relative" ref={searchRef}>
+    <div className="relative w-full md:w-auto" ref={searchRef}>
       <form onSubmit={handleSearch} className="flex items-center">
-        <div className="relative flex items-center">
+        <div className="relative flex items-center w-full">
           <input
             type="text"
             value={query}
@@ -74,7 +74,7 @@ export default function SearchBar({ allContent }) {
             }}
             onFocus={() => query.trim() !== '' && setShowResults(true)}
             placeholder="Search..."
-            className="bg-dark-card border border-gray-700 rounded-full pl-10 pr-4 py-1.5 text-sm focus:outline-none focus:border-red-400 text-white w-56 transition-all"
+            className="bg-dark-card border border-gray-700 rounded-full pl-10 pr-4 py-1.5 text-sm focus:outline-none focus:border-red-400 text-white w-full md:w-56 transition-all"
           />
           <div className="absolute left-3 text-gray-400">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -95,7 +95,7 @@ export default function SearchBar({ allContent }) {
       
       {/* Floating results preview */}
       {showResults && results.length > 0 && (
-        <div className="absolute right-0 mt-2 w-72 bg-dark-card rounded-md shadow-lg border border-gray-700 overflow-hidden z-50">
+        <div className="absolute right-0 left-0 md:left-auto mt-2 w-full md:w-72 bg-dark-card rounded-md shadow-lg border border-gray-700 overflow-hidden z-50">
           <div className="p-2">
             {results.map((result, index) => (
               <Link 

@@ -3,7 +3,7 @@ import ArtNavigation from '../../components/ArtNavigation';
 
 export default function Objects({ items }) {
   return (
-    <div>
+    <div className="w-full">
       <h1 className="text-3xl font-bold mb-6 text-red-400">Objects</h1>
       
       <ArtNavigation />

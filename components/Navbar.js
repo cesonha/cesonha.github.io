@@ -21,12 +21,12 @@ export default function Navbar({ allContent }) {
   return (
     <nav className="bg-dark-lighter text-white">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center py-4">
-          <Link href="/about" className="text-xl font-bold text-orange-400 hover:text-orange-300 transition-colors">
+        <div className="flex flex-col md:flex-row justify-between items-center py-4">
+          <Link href="/about" className="text-xl font-bold text-orange-400 hover:text-orange-300 transition-colors mb-4 md:mb-0">
             Lofi Bits
           </Link>
           
-          <div className="flex space-x-6">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-4 md:mb-0">
             {navItems.map((item) => (
               <Link 
                 href={item.path} 
@@ -40,19 +40,21 @@ export default function Navbar({ allContent }) {
             ))}
           </div>
           
-          <div className="flex items-center space-x-4">
+          <div className="flex flex-wrap items-center justify-center gap-4">
             <SearchBar allContent={allContent} />
-            {socialLinks.map((link) => (
-              <a 
-                href={link.url} 
-                key={link.label}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-accent transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
+            <div className="flex gap-4">
+              {socialLinks.map((link) => (
+                <a 
+                  href={link.url} 
+                  key={link.label}
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-accent transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>

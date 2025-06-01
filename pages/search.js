@@ -58,7 +58,7 @@ export default function SearchResults({ allContent }) {
   }, {});
 
   return (
-    <div>
+    <div className="w-full">
       <h1 className="text-3xl font-bold mb-2 text-red-400">Search Results</h1>
       <p className="text-gray-300 mb-6">
         {q ? `Showing results for "${q}"` : 'Enter a search term to find content'}

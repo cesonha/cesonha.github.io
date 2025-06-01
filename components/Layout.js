@@ -37,8 +37,10 @@ export default function Layout({ children, title = 'Lofi Bits | Personal Website
       
       <Navbar allContent={searchContent} />
       
-      <main className="flex-grow container mx-auto px-4 py-8">
-        {children}
+      <main className="flex-grow container mx-auto px-4 py-8 flex justify-center">
+        <div className="w-full max-w-4xl">
+          {children}
+        </div>
       </main>
       
       <Footer />

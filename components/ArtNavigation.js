@@ -13,7 +13,7 @@ export default function ArtNavigation() {
 
   return (
     <div className="mb-8 border-b border-gray-700 pb-4">
-      <div className="flex flex-wrap gap-4">
+      <div className="flex flex-wrap justify-center md:justify-start gap-4">
         {artCategories.map((category) => (
           <Link
             href={category.path}
