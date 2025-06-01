@@ -8,18 +8,27 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Main color palette
         primary: {
           DEFAULT: '#E53E3E', // Red-600
           hover: '#C53030', // Red-700
+          light: '#FC8181', // Red-300
+          lighter: '#FEB2B2', // Red-200
+          dark: '#9B2C2C', // Red-800
         },
-        accent: {
-          DEFAULT: '#FC8181', // Red-300
-          hover: '#F56565', // Red-400
-        },
+        // Background colors
         dark: {
           DEFAULT: '#111827', // Dark gray
           lighter: '#1F2937',
           card: '#1E293B',
+          border: '#374151', // Border color
+        },
+        // Text colors
+        text: {
+          primary: '#FFFFFF', // White
+          secondary: '#E2E8F0', // Gray-300
+          muted: '#A0AEC0', // Gray-500
+          heading: '#FC8181', // Red-300 for headings
         },
       },
       typography: (theme) => ({
