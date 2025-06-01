@@ -4,10 +4,10 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center gap-2">
           <div>
-            <p>© {new Date().getFullYear()} <span className="text-red-400">Cesar Cano</span></p>
+            <p>© {new Date().getFullYear()} <span className="text-primary-light">Cesar Cano</span></p>
           </div>
           <div>
-            <p>Built with <span className="text-red-400">Next.js</span></p>
+            <p>Built with <span className="text-primary-light">Next.js</span></p>
           </div>
         </div>
       </div>

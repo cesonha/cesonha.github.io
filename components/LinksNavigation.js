@@ -20,7 +20,7 @@ export default function LinksNavigation() {
             key={category.path}
             className={`px-4 py-2 rounded-md transition-colors ${
               currentPath === category.path
-                ? 'bg-red-500 text-white'
+                ? 'bg-primary text-text-primary'
                 : 'bg-dark-card text-gray-300 hover:bg-gray-700'
             }`}
           >

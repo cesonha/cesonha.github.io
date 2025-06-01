@@ -5,11 +5,11 @@
  * All colors are defined in tailwind.config.js and can be used with Tailwind classes.
  * 
  * Primary Colors:
- * - bg-primary: Main red color (#E53E3E)
- * - bg-primary-hover: Darker red for hover states (#C53030)
- * - bg-primary-light: Lighter red for highlights (#FC8181)
- * - bg-primary-lighter: Very light red for subtle highlights (#FEB2B2)
- * - bg-primary-dark: Dark red for emphasis (#9B2C2C)
+ * - bg-primary: Main green color (#10B981)
+ * - bg-primary-hover: Darker green for hover states (#059669)
+ * - bg-primary-light: Lighter green for highlights (#34D399)
+ * - bg-primary-lighter: Very light green for subtle highlights (#6EE7B7)
+ * - bg-primary-dark: Dark green for emphasis (#047857)
  * 
  * Text variants:
  * - text-primary: Main red text
@@ -26,7 +26,7 @@
  * - text-text-primary: Main text color - white (#FFFFFF)
  * - text-text-secondary: Secondary text color (#E2E8F0)
  * - text-text-muted: Muted text for less important content (#A0AEC0)
- * - text-text-heading: Color for headings (#FC8181)
+ * - text-text-heading: Color for headings (#34D399)
  * 
  * Usage Examples:
  * 

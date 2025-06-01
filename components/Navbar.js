@@ -50,7 +50,7 @@ export default function Navbar({ allContent }) {
     <nav className="bg-dark-lighter text-white">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center py-4">
-          <Link href="/home" className="text-xl font-bold text-red-400 hover:text-red-300 transition-colors mb-4 md:mb-0">
+          <Link href="/home" className="text-xl font-bold text-primary-light hover:text-primary-hover transition-colors mb-4 md:mb-0">
             Cesar Cano
           </Link>
           

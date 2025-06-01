@@ -28,7 +28,7 @@ module.exports = {
           primary: '#FFFFFF', // White
           secondary: '#E2E8F0', // Gray-300
           muted: '#A0AEC0', // Gray-500
-          heading: '#FC8181', // Red-300 for headings
+          heading: '#34D399', // Green-400 for headings (matches primary-light)
         },
       },
       typography: (theme) => ({
@@ -36,21 +36,21 @@ module.exports = {
           css: {
             color: theme('colors.gray.300'),
             h1: {
-              color: theme('colors.red.500'),
+              color: theme('colors.primary.light'),
             },
             h2: {
-              color: theme('colors.red.500'),
+              color: theme('colors.primary.light'),
             },
             h3: {
-              color: theme('colors.red.500'),
+              color: theme('colors.primary.light'),
             },
             strong: {
-              color: theme('colors.red.300'),
+              color: theme('colors.primary.light'),
             },
             a: {
-              color: theme('colors.red.400'),
+              color: theme('colors.primary.light'),
               '&:hover': {
-                color: theme('colors.red.300'),
+                color: theme('colors.primary.hover'),
               },
             },
           },

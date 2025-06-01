@@ -59,46 +59,46 @@ export default function SearchResults({ allContent }) {
 
   return (
     <div className="w-full">
-      <h1 className="text-3xl font-bold mb-2 text-red-400">Search Results</h1>
-      <p className="text-gray-300 mb-6">
+      <h1 className="text-3xl font-bold mb-2 text-primary-light">Search Results</h1>
+      <p className="text-text-secondary mb-6">
         {q ? `Showing results for "${q}"` : 'Enter a search term to find content'}
       </p>
 
       {loading ? (
-        <p className="text-gray-300">Loading results...</p>
+        <p className="text-text-secondary">Loading results...</p>
       ) : results.length === 0 ? (
-        <div className="bg-dark-card rounded p-6 border border-gray-800">
-          <p className="text-gray-300">No results found for "{q}".</p>
-          <p className="text-gray-400 mt-2">Try a different search term or browse the site using the navigation menu.</p>
+        <div className="bg-dark-card rounded p-6 border border-dark-border">
+          <p className="text-text-secondary">No results found for "{q}".</p>
+          <p className="text-text-muted mt-2">Try a different search term or browse the site using the navigation menu.</p>
         </div>
       ) : (
         <div className="space-y-8">
           {Object.entries(groupedResults).map(([type, typeResults]) => (
-            <div key={type} className="bg-dark-card rounded p-6 border border-gray-800">
-              <h2 className="text-xl font-semibold mb-4 text-orange-300 capitalize">
+            <div key={type} className="bg-dark-card rounded p-6 border border-dark-border">
+              <h2 className="text-xl font-semibold mb-4 text-primary-light capitalize">
                 {type === 'blog' ? 'Blog Posts' : 
                  type === 'album' ? 'Photo Albums' : 
                  type === 'photo' ? 'Photos' : 
                  type === 'links' ? 'Links' : 'Items'}
-                <span className="text-gray-400 text-sm ml-2">({typeResults.length})</span>
+                <span className="text-text-muted text-sm ml-2">({typeResults.length})</span>
               </h2>
               
               <div className="space-y-4">
                 {typeResults.map(result => (
-                  <div key={result.id} className="border-t border-gray-700 pt-4">
+                  <div key={result.id} className="border-t border-dark-border pt-4">
                     <h3 className="text-lg font-medium">
-                      <Link href={result.url} className="text-red-300 hover:text-red-200 transition-colors">
+                      <Link href={result.url} className="text-primary-light hover:text-primary-hover transition-colors">
                         {result.title}
                       </Link>
                     </h3>
                     {result.excerpt && (
-                      <p className="text-gray-300 mt-1">{result.excerpt.length > 150 
+                      <p className="text-text-secondary mt-1">{result.excerpt.length > 150 
                         ? `${result.excerpt.substring(0, 150)}...` 
                         : result.excerpt}
                       </p>
                     )}
-                    <p className="text-gray-400 text-sm mt-2">
-                      Match found in: <span className="text-red-400 capitalize">{result.matchType}</span>
+                    <p className="text-text-muted text-sm mt-2">
+                      Match found in: <span className="text-primary-light capitalize">{result.matchType}</span>
                       {result.category && <span> | Category: {result.category}</span>}
                     </p>
                   </div>
