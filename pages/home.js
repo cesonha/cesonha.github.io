@@ -134,8 +134,6 @@ export async function getStaticProps() {
       latestPost,
       featuredAlbums,
       randomArtItem
-    },
-    // Revalidate every hour to get new random art and latest content
-    revalidate: 3600
+    }
   };
 }
