@@ -5,34 +5,42 @@ export default function About() {
       
       <div className="prose lg:prose-xl max-w-none">
         <p>
-          Hello! I'm Cesar Cano, a software developer with a passion for creating clean, 
-          efficient, and user-friendly applications. I specialize in web development
-          and enjoy working with modern technologies.
+          Hello! I'm Cesar Cano, a Senior Android Developer based in São Paulo, Brazil. I'm passionate about 
+          developing native Android applications, libraries, and SDKs. I love debugging and understanding 
+          how things work under the hood.
         </p>
         
         <h2>My Skills</h2>
         <ul>
-          <li>JavaScript/TypeScript</li>
-          <li>React & Next.js</li>
-          <li>Node.js</li>
-          <li>HTML/CSS</li>
-          <li>And more...</li>
+          <li>Android Development (Java/Kotlin)</li>
+          <li>Jetpack Compose</li>
+          <li>Android Architecture Components</li>
+          <li>Dependency Injection (Koin, Hilt)</li>
+          <li>Mobile UI/UX Design</li>
         </ul>
         
         <h2>Experience</h2>
         <p>
-          I have X years of experience working in the software industry, 
-          contributing to projects ranging from small startups to large enterprise applications.
+          I currently work at DoorDash, where I develop and maintain Android applications. 
+          I have experience working with various Android frameworks and libraries, and I enjoy 
+          solving complex problems in mobile development.
         </p>
         
         <h2>Education</h2>
         <p>
-          I hold a degree in Computer Science from University Name.
+          I hold a Bachelor's degree in Computer Science from Universidade de São Paulo (2013-2018).
         </p>
+        
+        <h2>Languages</h2>
+        <ul>
+          <li>Portuguese (Native)</li>
+          <li>English (Full professional proficiency)</li>
+        </ul>
         
         <h2>Interests</h2>
         <p>
-          Outside of coding, I enjoy photography, hiking, and reading.
+          Outside of coding, I enjoy photography, food, and exploring new technologies. 
+          I'm also interested in AI developments and their applications in mobile development.
         </p>
       </div>
     </div>

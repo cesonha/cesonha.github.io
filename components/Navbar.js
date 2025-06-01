@@ -13,17 +13,17 @@ export default function Navbar({ allContent }) {
   ];
   
   const socialLinks = [
-    { label: 'GitHub', url: 'https://github.com/yourusername', icon: 'github' },
-    { label: 'LinkedIn', url: 'https://linkedin.com/in/yourusername', icon: 'linkedin' },
-    // Add more as needed
+    { label: 'GitHub', url: 'https://github.com/cesonha', icon: 'github' },
+    { label: 'LinkedIn', url: 'https://linkedin.com/in/cesar-cano-de-oliveira', icon: 'linkedin' },
+    { label: 'StackOverflow', url: 'https://stackoverflow.com/users/3005235/cesonha', icon: 'stackoverflow' },
   ];
   
   return (
     <nav className="bg-dark-lighter text-white">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center py-4">
-          <Link href="/about" className="text-xl font-bold text-orange-400 hover:text-orange-300 transition-colors mb-4 md:mb-0">
-            Lofi Bits
+          <Link href="/about" className="text-xl font-bold text-red-400 hover:text-red-300 transition-colors mb-4 md:mb-0">
+            Cesar Cano
           </Link>
           
           <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-4 md:mb-0">
