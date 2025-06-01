@@ -26,18 +26,18 @@ export default function AdminDashboard() {
       <p className="text-gray-300 mb-8">This dashboard is only available in development mode.</p>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Link href="/admin/blog">
-          <div className="p-6 bg-gray-800 border border-gray-700 rounded-lg hover:border-red-400 transition-colors cursor-pointer">
+        <Link href="/admin/blog" legacyBehavior>
+          <a className="p-6 bg-gray-800 border border-gray-700 rounded-lg hover:border-red-400 transition-colors cursor-pointer block">
             <h2 className="text-xl font-bold mb-2 text-red-400">Blog Posts</h2>
             <p className="text-gray-400">Create and manage blog posts</p>
-          </div>
+          </a>
         </Link>
         
-        <Link href="/admin/photos">
-          <div className="p-6 bg-gray-800 border border-gray-700 rounded-lg hover:border-red-400 transition-colors cursor-pointer">
+        <Link href="/admin/photos" legacyBehavior>
+          <a className="p-6 bg-gray-800 border border-gray-700 rounded-lg hover:border-red-400 transition-colors cursor-pointer block">
             <h2 className="text-xl font-bold mb-2 text-red-400">Photo Albums</h2>
             <p className="text-gray-400">Create and manage photo albums</p>
-          </div>
+          </a>
         </Link>
       </div>
     </div>

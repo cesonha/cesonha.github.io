@@ -2,16 +2,20 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { createPhotoAlbum } from '../../lib/admin-utils';
+import { getAllAlbums, getAlbumById } from '../../lib/photos';
 
 export default function PhotosAdmin() {
   const [isDevMode, setIsDevMode] = useState(false);
   const router = useRouter();
+  const [mode, setMode] = useState('create'); // 'create' or 'edit'
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [slug, setSlug] = useState('');
-  const [photos, setPhotos] = useState([{ url: '', caption: '' }]);
+  const [photos, setPhotos] = useState([{ src: '', caption: '' }]);
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [existingAlbums, setExistingAlbums] = useState([]);
+  const [selectedAlbum, setSelectedAlbum] = useState('');
 
   useEffect(() => {
     // Check if we're in development mode
@@ -20,21 +24,52 @@ export default function PhotosAdmin() {
     // Redirect to home if not in development mode
     if (process.env.NODE_ENV !== 'development') {
       router.push('/');
+    } else {
+      // Load existing albums
+      try {
+        const albums = getAllAlbums();
+        setExistingAlbums(albums);
+      } catch (error) {
+        console.error('Error loading albums:', error);
+      }
     }
   }, [router]);
 
   // Generate slug from title
   useEffect(() => {
-    if (title) {
+    if (title && mode === 'create') {
       setSlug(title.toLowerCase()
         .replace(/[^\w\s-]/g, '')
         .replace(/\s+/g, '-')
         .replace(/-+/g, '-'));
     }
-  }, [title]);
+  }, [title, mode]);
+
+  // Load album data when selecting an existing album
+  useEffect(() => {
+    if (selectedAlbum && mode === 'edit') {
+      try {
+        const album = getAlbumById(selectedAlbum);
+        setTitle(album.title || '');
+        setDescription(album.description || '');
+        setSlug(selectedAlbum);
+        
+        // Convert album photos to the format used in the form
+        const formattedPhotos = album.photos?.map(photo => ({
+          src: photo.src || '',
+          caption: photo.caption || ''
+        })) || [{ src: '', caption: '' }];
+        
+        setPhotos(formattedPhotos);
+      } catch (error) {
+        console.error('Error loading album:', error);
+        setMessage(`Error: Could not load album data`);
+      }
+    }
+  }, [selectedAlbum, mode]);
 
   const addPhotoField = () => {
-    setPhotos([...photos, { url: '', caption: '' }]);
+    setPhotos([...photos, { src: '', caption: '' }]);
   };
 
   const removePhotoField = (index) => {
@@ -59,15 +94,22 @@ export default function PhotosAdmin() {
         title,
         description,
         slug,
-        photos: photos.filter(photo => photo.url.trim() !== ''),
+        photos: photos.filter(photo => photo.src.trim() !== ''),
+        isEdit: mode === 'edit'
       });
       
       if (result.success) {
-        setMessage('Album created successfully!');
-        setTitle('');
-        setDescription('');
-        setSlug('');
-        setPhotos([{ url: '', caption: '' }]);
+        setMessage(`Album ${mode === 'create' ? 'created' : 'updated'} successfully!`);
+        if (mode === 'create') {
+          setTitle('');
+          setDescription('');
+          setSlug('');
+          setPhotos([{ src: '', caption: '' }]);
+          
+          // Refresh the album list
+          const albums = getAllAlbums();
+          setExistingAlbums(albums);
+        }
       } else {
         setMessage(`Error: ${result.message}`);
       }
@@ -78,6 +120,19 @@ export default function PhotosAdmin() {
     }
   };
 
+  const switchMode = (newMode) => {
+    setMode(newMode);
+    setMessage('');
+    
+    if (newMode === 'create') {
+      setTitle('');
+      setDescription('');
+      setSlug('');
+      setPhotos([{ src: '', caption: '' }]);
+      setSelectedAlbum('');
+    }
+  };
+
   if (!isDevMode) {
     return <div>Loading...</div>;
   }
@@ -85,15 +140,60 @@ export default function PhotosAdmin() {
   return (
     <div className="max-w-4xl mx-auto py-8">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-red-400">Create Photo Album</h1>
-        <Link href="/admin">
-          <div className="text-red-400 hover:text-red-300 cursor-pointer">Back to Dashboard</div>
+        <h1 className="text-3xl font-bold text-red-400">
+          {mode === 'create' ? 'Create Photo Album' : 'Edit Photo Album'}
+        </h1>
+        <Link href="/admin" legacyBehavior>
+          <a className="text-red-400 hover:text-red-300 cursor-pointer">Back to Dashboard</a>
         </Link>
+      </div>
+
+      <div className="flex space-x-4 mb-6">
+        <button
+          onClick={() => switchMode('create')}
+          className={`px-4 py-2 rounded ${
+            mode === 'create' 
+              ? 'bg-red-500 text-white' 
+              : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+          }`}
+        >
+          Create New Album
+        </button>
+        <button
+          onClick={() => switchMode('edit')}
+          className={`px-4 py-2 rounded ${
+            mode === 'edit' 
+              ? 'bg-red-500 text-white' 
+              : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+          }`}
+        >
+          Edit Existing Album
+        </button>
       </div>
 
       {message && (
         <div className={`p-4 mb-6 rounded ${message.includes('Error') ? 'bg-red-900/50 text-red-200' : 'bg-green-900/50 text-green-200'}`}>
           {message}
+        </div>
+      )}
+
+      {mode === 'edit' && (
+        <div className="mb-6">
+          <label htmlFor="existingAlbum" className="block text-gray-300 mb-2">Select Album to Edit</label>
+          <select
+            id="existingAlbum"
+            value={selectedAlbum}
+            onChange={(e) => setSelectedAlbum(e.target.value)}
+            className="w-full p-2 bg-gray-800 border border-gray-700 rounded text-gray-200"
+            required
+          >
+            <option value="">-- Select an album --</option>
+            {existingAlbums.map(album => (
+              <option key={album.id} value={album.id}>
+                {album.title}
+              </option>
+            ))}
+          </select>
         </div>
       )}
 
@@ -119,7 +219,11 @@ export default function PhotosAdmin() {
             onChange={(e) => setSlug(e.target.value)}
             className="w-full p-2 bg-gray-800 border border-gray-700 rounded text-gray-200"
             required
+            readOnly={mode === 'edit'}
           />
+          {mode === 'edit' && (
+            <p className="text-gray-400 text-sm mt-1">Slug cannot be changed when editing</p>
+          )}
         </div>
 
         <div>
@@ -164,8 +268,8 @@ export default function PhotosAdmin() {
                   <label className="block text-gray-400 mb-1 text-sm">Image URL (relative to public folder)</label>
                   <input
                     type="text"
-                    value={photo.url}
-                    onChange={(e) => updatePhotoField(index, 'url', e.target.value)}
+                    value={photo.src}
+                    onChange={(e) => updatePhotoField(index, 'src', e.target.value)}
                     placeholder="images/photos/album-name/photo1.jpg"
                     className="w-full p-2 bg-gray-800 border border-gray-700 rounded text-gray-200"
                   />
@@ -187,10 +291,12 @@ export default function PhotosAdmin() {
 
         <button
           type="submit"
-          disabled={isLoading}
+          disabled={isLoading || (mode === 'edit' && !selectedAlbum)}
           className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 disabled:opacity-50"
         >
-          {isLoading ? 'Creating...' : 'Create Album'}
+          {isLoading 
+            ? (mode === 'create' ? 'Creating...' : 'Updating...') 
+            : (mode === 'create' ? 'Create Album' : 'Update Album')}
         </button>
       </form>
     </div>

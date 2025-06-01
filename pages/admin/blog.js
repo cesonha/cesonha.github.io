@@ -73,8 +73,8 @@ export default function BlogAdmin() {
     <div className="max-w-4xl mx-auto py-8">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold text-red-400">Create Blog Post</h1>
-        <Link href="/admin">
-          <div className="text-red-400 hover:text-red-300 cursor-pointer">Back to Dashboard</div>
+        <Link href="/admin" legacyBehavior>
+          <a className="text-red-400 hover:text-red-300 cursor-pointer">Back to Dashboard</a>
         </Link>
       </div>
 
