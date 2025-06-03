@@ -4,29 +4,29 @@
 
 @layer base {
   body {
-    @apply bg-dark text-text-primary;
+    @apply bg-dark text-text-primary; /* Light cream background with dark brown text */
   }
 }
 
 @layer components {
   .prose {
-    @apply text-text-primary;
+    @apply text-text-primary; /* Dark brown text */
   }
   
   .prose h1, .prose h2, .prose h3, .prose h4 {
-    @apply text-primary-light;
+    @apply text-primary; /* Orange headings */
   }
   
   .prose strong {
-    @apply text-primary-light;
+    @apply text-primary; /* Orange for emphasis */
   }
   
   .prose a {
-    @apply text-primary-light hover:text-primary-hover;
+    @apply text-primary hover:text-primary-hover; /* Orange links with darker orange hover */
   }
   
   .prose ul li::before {
-    @apply text-primary;
+    @apply text-primary; /* Orange bullet points */
   }
   
   .prose img {
